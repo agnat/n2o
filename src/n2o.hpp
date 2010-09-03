@@ -5,14 +5,16 @@
 
 #include "context_stack.hpp"
 #include "caller.hpp"
+#include "function_wrapper.hpp"
 
 namespace n2o {
 
 template <typename F>
 void
 function(const char * name, F f) {
+    v8::Local<v8::Value> data = detail::get_function_wrapper(reinterpret_cast<void*>(f));
     detail::get_context()->Set( v8::String::NewSymbol(name),
-            v8::FunctionTemplate::New(detail::caller<F>::call)->GetFunction());
+            v8::FunctionTemplate::New(detail::caller<F>::call, data)->GetFunction());
 }
 
 template <typename T>

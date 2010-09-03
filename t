@@ -5,4 +5,6 @@ var sys = require('sys'),
 
 sys.puts(sys.inspect(hw));
 
+hw.greet();
+
 // vim: filetype=javascript :
