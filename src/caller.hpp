@@ -1,7 +1,11 @@
 #ifndef N2O_FUNCTION_WRAPPER_INCLUDED
 #define N2O_FUNCTION_WRAPPER_INCLUDED
 
+#include "config.h"
+
 #include <iostream>
+
+#include "function_wrapper.hpp"
 
 namespace n2o { namespace detail {
 
@@ -10,10 +14,10 @@ struct caller {
     static
     v8::Handle<v8::Value>
     call(v8::Arguments const& args) {
-        HandleScope scope;
-        v8::Local<v8::Object> data = args.Data()->ToObject();
-        F f(reinterpret_cast<F>(data->GetPointerFromInternalField(0)));
+        v8::HandleScope scope;
+        F f(detail::unwrap_function<F>(args));
         f();
+        return v8::Undefined();
     }
 };
 

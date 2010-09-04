@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
 var sys = require('sys'),
-    hw  = require('./lib/hello_world');
+    bttf  = require('./binding');
 
-sys.puts(sys.inspect(hw));
+sys.puts(sys.inspect(bttf));
 
-hw.greet();
+bttf.greet();
 
 // vim: filetype=javascript :

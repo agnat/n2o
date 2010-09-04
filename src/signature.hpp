@@ -1,0 +1,42 @@
+#if ! defined( BOOST_PP_IS_ITERATING )
+
+# ifndef N2O_SIGNATURE_INCLUDED
+#  define N2O_SIGNATURE_INCLUDED
+
+#  include "config.h"
+
+#  include <boost/preprocessor/iterate.hpp>
+
+#include "type_list.hpp"
+
+#  define N2O_LIST_INC(n) \
+        BOOST_PP_CAT(boost::mpl::vector, BOOST_PP_INC(n))
+
+namespace n2o { namespace detail {
+
+#  define BOOST_PP_ITERATION_PARAMS_1 \
+        (3, (0, N2O_MAX_ARITY, <signature.hpp>))
+#  include BOOST_PP_ITERATE()
+
+}} // end of namespace detail, n2o
+
+# endif // N2O_SIGNATURE_INCLUDED
+
+#else // BOOST_PP_IS_ITERATING
+#if BOOST_PP_ITERATION_DEPTH() == 1
+
+# define N BOOST_PP_ITERATION()
+
+template <class RT BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, class T)>
+inline
+N2O_LIST_INC(N) <RT BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, T)>
+get_signature(RT(*)(BOOST_PP_ENUM_PARAMS_Z(1, N, T)), void * = 0) {
+    return N2O_LIST_INC(N)<RT BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, T)>();
+}
+
+# undef N
+
+#else // BOOST_PP_ITERATION_DEPTH
+
+#endif // ! defined(BOOST_PP_IS_ITERATING)
+#endif // BOOST_PP_IS_ITERATING
