@@ -1,5 +1,5 @@
-#ifndef N2O_FUNCTION_WRAPPER
-#define N2O_FUNCTION_WRAPPER
+#ifndef N2O_FUNCTION_WRAPPER_INCLUDED
+#define N2O_FUNCTION_WRAPPER_INCLUDED
 
 #include "config.h"
 
@@ -29,4 +29,4 @@ unwrap_function(v8::Arguments const& args) {
 }
 
 }} // end of namespace detail, n2o
-#endif // N2O_FUNCTION_WRAPPER
+#endif // N2O_FUNCTION_WRAPPER_INCLUDED
