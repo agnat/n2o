@@ -14,7 +14,7 @@ struct flux_compensator {
 
 using namespace n2o;
 
-N2O_MODULE(bttf) {
+void init() {
 
     function("greet", greet);
 
@@ -26,3 +26,5 @@ N2O_MODULE(bttf) {
 
     detail::get_signature(int_f_void);
 }
+
+N2O_NODE_MODULE(init);
