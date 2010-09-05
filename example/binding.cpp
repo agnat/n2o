@@ -4,7 +4,7 @@
 
 void greet() {std::cout << "greetingz" << std::endl;}
 
-int int_f_void() { return 23; }
+int int_f_void() { return -5; }
 
 struct flux_compensator {
     void compensate() {}
@@ -20,7 +20,7 @@ void init() {
 
     function("int_f_void", int_f_void);
 
-    class_<flux_compensator>("fluxCompensator")
+    class_<flux_compensator>("FluxCompensator")
         . function("compensate", & flux_compensator::compensate)
         ;
 

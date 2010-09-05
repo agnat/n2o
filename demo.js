@@ -7,5 +7,8 @@ sys.puts(sys.inspect(bttf));
 
 bttf.greet();
 sys.puts(bttf.int_f_void());
+sys.puts(bttf.FluxCompensator);
+
+var fc = new bttf.FluxCompensator();
 
 // vim: filetype=javascript :
