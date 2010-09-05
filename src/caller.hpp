@@ -26,15 +26,7 @@ struct select_result_converter :
     >
 {};
 
-struct dummy_result_converter {
-    template <typename T>
-    v8::Handle<v8::Value>
-    operator()(T v) const {
-        std::cout << "result converter()" << std::endl;
-    }
-};
-
-template <typename F, typename Sig>
+template <typename F, typename CallPolicies, typename Sig>
 class caller {
     public:
         static
@@ -55,9 +47,10 @@ class caller {
         operator()(v8::Arguments const& args) {
             typedef typename boost::mpl::begin<Sig>::type first;
             typedef typename first::type result_t;
+            typedef typename select_result_converter<CallPolicies, result_t>::type result_converter;
             return detail::invoke(
                     detail::invoke_tag<result_t, F>(),
-                    dummy_result_converter(),
+                    result_converter(),
                     native_func_);
         }
     private:

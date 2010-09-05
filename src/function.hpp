@@ -3,7 +3,7 @@
 
 #include "config.h"
 
-#include "function_wrapper.hpp"
+#include "default_call_policies.hpp"
 
 #include "caller.hpp"
 #include "context_stack.hpp"
@@ -12,11 +12,11 @@ namespace n2o {
 
 namespace detail {
 
-template <typename F, typename Sig>
+template <typename F, typename CallPolicies, typename Sig>
 v8::Local<v8::FunctionTemplate>
-make_function(F f, Sig signature) {
-    return v8::FunctionTemplate::New( detail::caller<F, Sig>::call,
-            detail::caller<F, Sig>::create(f));
+make_function(F f, CallPolicies const& p, Sig signature) {
+    return v8::FunctionTemplate::New( detail::caller<F, CallPolicies, Sig>::call,
+            detail::caller<F, CallPolicies, Sig>::create(f));
 }
 
 } // end of namespace detail
@@ -25,7 +25,8 @@ template <typename F>
 void
 function(const char * name, F f) {
     
-    v8::Local<v8::FunctionTemplate> t = detail::make_function(f, detail::get_signature(f));
+    v8::Local<v8::FunctionTemplate> t = detail::make_function(
+            f, default_call_policies(), detail::get_signature(f));
     detail::get_context()->Set( v8::String::NewSymbol(name), t->GetFunction());
 }
 

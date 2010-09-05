@@ -6,6 +6,6 @@ var sys = require('sys'),
 sys.puts(sys.inspect(bttf));
 
 bttf.greet();
-bttf.int_f_void();
+sys.puts(bttf.int_f_void());
 
 // vim: filetype=javascript :

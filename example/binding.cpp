@@ -4,7 +4,7 @@
 
 void greet() {std::cout << "greetingz" << std::endl;}
 
-int int_f_void() { return 5; }
+int int_f_void() { return 23; }
 
 struct flux_compensator {
     void compensate() {}
