@@ -5,6 +5,14 @@
 
 namespace n2o {
 
+// XXX duplicate
+template <typename F, typename CallPolicies, typename Sig>
+v8::Local<v8::FunctionTemplate>
+make_function(F f, CallPolicies const& p, Sig signature) {
+    return v8::FunctionTemplate::New( detail::caller<F, CallPolicies, Sig>::call,
+            detail::caller<F, CallPolicies, Sig>::create(f));
+}
+
 enum no_ctor_t { no_ctor };
 
 template <typename T>
@@ -15,14 +23,19 @@ class class_ {
             classname_(v8::String::NewSymbol(classname))
         {
             this->initialize(ctor<>());
+            detail::get_context()->Set( classname_, t_->GetFunction());
         }
         ~class_() {
-            detail::get_context()->Set( classname_, t_->GetFunction());
         }
 
         template <typename F>
         class_ &
         function(const char * name, F f) {
+            /*
+            v8::Local<v8::FunctionTemplate> t = detail::make_function(
+                    f, default_call_policies(), detail::get_signature(f, (T*)NULL));
+            t_->PrototypeTemplate()->Set(v8::String::NewSymbol(name), t);
+            */
             return *this;
         }
 
@@ -43,6 +56,8 @@ class class_ {
         initialize(no_ctor_t) {
             t_->SetClassName(classname_);
         }
+
+        detail::context_frame * ctx;
 };
 
 } // end of namespace n2o

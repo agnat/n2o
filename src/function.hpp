@@ -12,6 +12,7 @@ namespace n2o {
 
 namespace detail {
 
+// XXX duplicate
 template <typename F, typename CallPolicies, typename Sig>
 v8::Local<v8::FunctionTemplate>
 make_function(F f, CallPolicies const& p, Sig signature) {
