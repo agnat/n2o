@@ -30,7 +30,7 @@ template <typename T>
 inline
 v8::Handle<v8::Value>
 registry_to_v8_value<T>::operator()(argument_type x) const {
-    return v8::Undefined();
+    return v8::Undefined(v8::Isolate::GetCurrent());
 }
 
 } // end of namespace detail

@@ -32,8 +32,8 @@ template <class T> struct to_v8_value;
 
 
 #define N2O_TO_INT(T) \
-    N2O_TO_V8_BY_VALE( signed T, v8::Integer::New( v )) \
-    N2O_TO_V8_BY_VALE( unsigned T, v8::Integer::NewFromUnsigned( v ))
+    N2O_TO_V8_BY_VALE( signed T, v8::Integer::New(v8::Isolate::GetCurrent(), v )) \
+    N2O_TO_V8_BY_VALE( unsigned T, v8::Integer::NewFromUnsigned(v8::Isolate::GetCurrent(), v ))
 
 // handles signed char and unsigned char but not char
 N2O_TO_INT( char )

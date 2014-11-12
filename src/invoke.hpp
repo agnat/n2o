@@ -28,7 +28,7 @@ struct invoke_tag :
 {};
 
 # define BOOST_PP_ITERATION_PARAMS_1 \
-    (3, (0, N2O_MAX_ARITY, <invoke.hpp>))
+    (3, (0, N2O_MAX_ARITY, <src/invoke.hpp>))
 # include BOOST_PP_ITERATE()
 
 
@@ -53,7 +53,7 @@ v8::Handle<v8::Value>
 invoke(invoke_tag_<true, false>, RC const& rc, F & f BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
     f( BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT));
-    return v8::Undefined();
+    return v8::Undefined(v8::Isolate::GetCurrent());
 }
 
 template <typename RC, typename F, typename TC BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, typename AC)>
@@ -70,7 +70,7 @@ v8::Handle<v8::Value>
 invoke(invoke_tag_<true, true>, RC const& rc, F & f, TC & tc BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
     (tc().*f)(BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT));
-    return v8::Undefined();
+    return v8::Undefined(v8::Isolate::GetCurrent());
 }
 
 # undef N

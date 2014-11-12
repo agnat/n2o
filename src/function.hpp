@@ -6,7 +6,6 @@
 #include "default_call_policies.hpp"
 
 #include "caller.hpp"
-#include "context_stack.hpp"
 
 namespace n2o {
 
@@ -17,19 +16,20 @@ template <typename F, typename CallPolicies, typename Sig>
 v8::Local<v8::FunctionTemplate>
 make_function(F f, CallPolicies const& p, Sig signature) {
     typedef detail::caller<F, CallPolicies, Sig> caller;
-    return v8::FunctionTemplate::New( caller::call,
-            caller::create(f, CallPolicies()));
+    return v8::FunctionTemplate::New(
+              v8::Isolate::GetCurrent()
+            , caller::call
+            , caller::create(f, CallPolicies())
+            );
 }
 
 } // end of namespace detail
 
 template <typename F>
-void
-function(const char * name, F f) {
-    
-    v8::Local<v8::FunctionTemplate> t = detail::make_function(
+v8::Local<v8::FunctionTemplate>
+function(F f) {
+    return detail::make_function(
             f, default_call_policies(), detail::get_signature(f));
-    detail::get_context()->Set( v8::String::NewSymbol(name), t->GetFunction());
 }
 
 } // end of namespace n2o

@@ -9,8 +9,11 @@ namespace n2o {
 template <typename F, typename CallPolicies, typename Sig>
 v8::Local<v8::FunctionTemplate>
 make_function(F f, CallPolicies const& p, Sig signature) {
-    return v8::FunctionTemplate::New( detail::caller<F, CallPolicies, Sig>::call,
-            detail::caller<F, CallPolicies, Sig>::create(f));
+    return v8::FunctionTemplate::New(
+              v8::Isolate::GetCurrent()
+            , detail::caller<F, CallPolicies, Sig>::call
+            , detail::caller<F, CallPolicies, Sig>::create(f)
+            );
 }
 
 enum no_ctor_t { no_ctor };
@@ -19,11 +22,11 @@ template <typename T>
 class class_ {
     public:
         class_(const char * classname) :
-            t_(v8::FunctionTemplate::New()),
-            classname_(v8::String::NewSymbol(classname))
+            t_(v8::FunctionTemplate::New(v8::Isolate::GetCurrent())),
+            classname_(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), classname))
         {
             this->initialize(ctor<>());
-            detail::get_context()->Set( classname_, t_->GetFunction());
+            // XXX detail::get_context()->Set( classname_, t_->GetFunction());
         }
         ~class_() {
         }
@@ -57,7 +60,7 @@ class class_ {
             t_->SetClassName(classname_);
         }
 
-        detail::context_frame * ctx;
+        //detail::context_frame * ctx;
 };
 
 } // end of namespace n2o

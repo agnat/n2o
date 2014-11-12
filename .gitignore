@@ -1,4 +1,5 @@
 build
-.lock-wscript
 binding.node
-*.pyc
+npm-debug.log
+node_modules
+boost_

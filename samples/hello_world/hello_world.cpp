@@ -1,21 +1,16 @@
-#include <nil.hpp>
+#include <n2o.hpp>
 
 #include <iostream>
 
-using namespace nil;
+using namespace n2o;
 
-namespace {
+void greet() { std::cerr << "hello world" << std::endl; }
 
-void greet() {
-  std::cerr << "hello world" << std::endl;
-}
 
 void init(object exports) {
 
   exports["greet"] = function(greet);
 }
 
-NIL_MODULE(hello_world, init);
-
-}
+N2O_MODULE(hello_world, init);
 

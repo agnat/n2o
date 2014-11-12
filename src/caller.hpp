@@ -20,6 +20,7 @@
    
 #  include <iostream>
     
+#  include <v8.h>
     
 #  include "function_wrapper.hpp"
 #  include "arg_from_js.hpp"
@@ -50,10 +51,10 @@ struct caller;
     typedef arg_from_js<typename arg_iter##n::type> c_t##n; \
     c_t##n c##n(args[n]); \
     if ( ! c##n.convertible()) \
-        return v8::Undefined(); /* XXX */
+        return v8::Undefined(v8::Isolate::GetCurrent()); /* XXX */
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
-        (3, (0, N2O_MAX_ARITY + 1, "caller.hpp"))
+        (3, (0, N2O_MAX_ARITY + 1, "src/caller.hpp"))
 #  include BOOST_PP_ITERATE()
 
 #  undef N2O_ARG_CONVERTER
@@ -71,15 +72,15 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
         static
         v8::Handle<v8::Value>
         create(F f, CallPolicies p) {
-            return v8::External::Wrap(new caller(f, p)); // XXX never deleted
+            return v8::External::New(v8::Isolate::GetCurrent(), new caller(f, p)); // XXX never deleted
         }
 
 
         static
-        v8::Handle<v8::Value>
-        call(v8::Arguments const& args) {
-            caller * f = reinterpret_cast<caller*>(v8::External::Unwrap(args.Data()));
-            return (*f)(args);
+        void
+        call(v8::FunctionCallbackInfo<v8::Value> const& args) {
+            caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
+            args.GetReturnValue().Set((*f)(args));
         }
 
     private:
@@ -104,8 +105,8 @@ struct caller_arity<N> {
         impl(F f, Policies p) : data_(f,p) {}
 
         v8::Handle<v8::Value>
-        operator()(v8::Arguments const& args) {
-            v8::HandleScope scope;
+        operator()(v8::FunctionCallbackInfo<v8::Value> const& args) {
+            v8::HandleScope scope(v8::Isolate::GetCurrent());
             typedef typename boost::mpl::begin<Sig>::type first;
             typedef typename first::type result_t;
             typedef typename select_result_converter<Policies,result_t>::type result_converter;
@@ -118,7 +119,7 @@ struct caller_arity<N> {
 # endif
 
             if (! data_.second().precall(args /*inner_args*/)) {
-                return v8::Undefined(); // XXX
+                return v8::Undefined(v8::Isolate::GetCurrent()); // XXX
             }
 
 

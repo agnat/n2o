@@ -3,6 +3,9 @@
 
 #include "rvalue_from_js_data.hpp"
 #include "from_js.hpp"
+#include "../detail/void_ptr.hpp"
+
+#include "registered.hpp"
 
 namespace n2o {
     
@@ -15,7 +18,7 @@ struct dummy_converter {};
 
 //=== rvalue ==================================================================
 
-template <class T>
+template <typename T>
 struct arg_rvalue_from_js {
     // we can't add_const here, or it would be impossible to pass
     // auto_ptr<U> args from JS to C++
