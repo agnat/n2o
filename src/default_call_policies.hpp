@@ -45,9 +45,9 @@ struct default_call_policies {
     }
     template <typename ArgumentPackage>
     static
-    v8::Handle<v8::Value>
-    postcall(ArgumentPackage const&, v8::Handle<v8::Value> result) {
-        return result;
+    void
+    postcall(ArgumentPackage const& args, v8::Handle<v8::Value> result) {
+        args.GetReturnValue().Set(result);
     }
     typedef default_result_converter result_converter;
 };

@@ -51,7 +51,7 @@ struct caller;
     typedef arg_from_js<typename arg_iter##n::type> c_t##n; \
     c_t##n c##n(args[n]); \
     if ( ! c##n.convertible()) \
-        return v8::Undefined(v8::Isolate::GetCurrent()); /* XXX */
+        return; // TODO: throw
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
         (3, (0, N2O_MAX_ARITY + 1, "src/caller.hpp"))
@@ -80,7 +80,7 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
         void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
             caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
-            args.GetReturnValue().Set((*f)(args));
+            (*f)(args);
         }
 
     private:
@@ -104,7 +104,7 @@ struct caller_arity<N> {
     struct impl {
         impl(F f, Policies p) : data_(f,p) {}
 
-        v8::Handle<v8::Value>
+        void
         operator()(v8::FunctionCallbackInfo<v8::Value> const& args) {
             v8::HandleScope scope(v8::Isolate::GetCurrent());
             typedef typename boost::mpl::begin<Sig>::type first;
@@ -119,7 +119,7 @@ struct caller_arity<N> {
 # endif
 
             if (! data_.second().precall(args /*inner_args*/)) {
-                return v8::Undefined(v8::Isolate::GetCurrent()); // XXX
+                return; // TODO: throw
             }
 
 
@@ -128,7 +128,7 @@ struct caller_arity<N> {
                     result_converter(),
                     data_.first()
                     BOOST_PP_ENUM_TRAILING_PARAMS(N, c));
-            return data_.second().postcall(args /*inner_args*/, result);
+            data_.second().postcall(args /*inner_args*/, result);
         }
 
     private:
