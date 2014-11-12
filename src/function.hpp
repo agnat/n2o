@@ -16,8 +16,9 @@ namespace detail {
 template <typename F, typename CallPolicies, typename Sig>
 v8::Local<v8::FunctionTemplate>
 make_function(F f, CallPolicies const& p, Sig signature) {
-    return v8::FunctionTemplate::New( detail::caller<F, CallPolicies, Sig>::call,
-            detail::caller<F, CallPolicies, Sig>::create(f));
+    typedef detail::caller<F, CallPolicies, Sig> caller;
+    return v8::FunctionTemplate::New( caller::call,
+            caller::create(f, CallPolicies()));
 }
 
 } // end of namespace detail

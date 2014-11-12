@@ -44,8 +44,7 @@ inline
 v8::Handle<v8::Value>
 invoke(invoke_tag_<false, false>, RC const& rc, F & f BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
-    v8::HandleScope scope;
-    return scope.Close(rc( f( BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT))));
+    return rc( f( BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT) ));
 }
 
 template <typename RC, typename F BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, typename AC)>
@@ -53,7 +52,6 @@ inline
 v8::Handle<v8::Value>
 invoke(invoke_tag_<true, false>, RC const& rc, F & f BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
-    v8::HandleScope scope;
     f( BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT));
     return v8::Undefined();
 }
@@ -63,8 +61,7 @@ inline
 v8::Handle<v8::Value>
 invoke(invoke_tag_<false, true>, RC const& rc, F & f, TC & tc BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
-    v8::HandleScope scope;
-    return scope.Close( rc( (tc().*f)(BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT)) ));
+    return rc( (tc().*f)(BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT)) );
 }
 
 template <typename RC, typename F, typename TC BOOST_PP_ENUM_TRAILING_PARAMS_Z(1, N, typename AC)>
@@ -72,7 +69,6 @@ inline
 v8::Handle<v8::Value>
 invoke(invoke_tag_<true, true>, RC const& rc, F & f, TC & tc BOOST_PP_ENUM_TRAILING_BINARY_PARAMS_Z(1, N, AC, &ac))
 {
-    v8::HandleScope scope;
     (tc().*f)(BOOST_PP_ENUM_BINARY_PARAMS_Z(1, N, ac, () BOOST_PP_INTERCEPT));
     return v8::Undefined();
 }
