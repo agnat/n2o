@@ -1,4 +1,5 @@
 const root  = require('path').resolve(__dirname, '.')
+    , n2o   = require('bindings')('n2o')
     , hello = require('bindings')({ module_root: root, bindings: 'hello_world' });
 
 hello.greet();
