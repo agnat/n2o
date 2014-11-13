@@ -1,11 +1,11 @@
 #ifndef N2O_FUNCTION_INCLUDED
 #define N2O_FUNCTION_INCLUDED
 
-#include "config.h"
+#include <n2o/config.h>
 
-#include "default_call_policies.hpp"
+#include <n2o/default_call_policies.hpp>
 
-#include "caller.hpp"
+#include <n2o/caller.hpp>
 
 namespace n2o {
 

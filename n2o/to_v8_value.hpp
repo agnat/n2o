@@ -1,8 +1,8 @@
 #ifndef N2O_TO_V8_VALUE_INCLUDED
 #define N2O_TO_V8_VALUE_INCLUDED
 
-#include "value_arg.hpp"
-#include "builtin_converters.hpp"
+#include <n2o/value_arg.hpp>
+#include <n2o/builtin_converters.hpp>
 
 namespace n2o {
 

@@ -3,12 +3,12 @@
 # ifndef N2O_SIGNATURE_INCLUDED
 #  define N2O_SIGNATURE_INCLUDED
 
-#  include "config.h"
+#  include <n2o/config.h>
 
 #  include <boost/preprocessor/iterate.hpp>
 
-#include "preprocessor.hpp"
-#include "type_list.hpp"
+#include <n2o/preprocessor.hpp>
+#include <n2o/type_list.hpp>
 
 #  define N2O_LIST_INC(n) \
         BOOST_PP_CAT(boost::mpl::vector, BOOST_PP_INC(n))

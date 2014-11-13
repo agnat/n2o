@@ -1,7 +1,7 @@
 #ifndef N2O_TYPE_LIST_INCLUDED
 # define N2O_TYPE_LIST_INCLUDED
 
-#include "config.h"
+#include <n2o/config.h>
 
 # include <boost/preprocessor/arithmetic/inc.hpp>
 

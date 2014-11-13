@@ -8,7 +8,7 @@
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/is_reference.hpp>
 
-#include "to_v8_value.hpp"
+#include <n2o/to_v8_value.hpp>
 
 namespace n2o {
 

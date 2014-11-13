@@ -1,7 +1,7 @@
 #ifndef N2O_CLASS_INCLUDED
 #define N2O_CLASS_INCLUDED
 
-#include "ctor.hpp"
+#include <n2o/ctor.hpp>
 
 namespace n2o {
 

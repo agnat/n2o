@@ -1,11 +1,11 @@
 #ifndef N2O_CONVERTER_ARG_FROM_JS_INCLUDED
 #define N2O_CONVERTER_ARG_FROM_JS_INCLUDED
 
-#include "rvalue_from_js_data.hpp"
-#include "from_js.hpp"
-#include "../detail/void_ptr.hpp"
+#include <n2o/converter/rvalue_from_js_data.hpp>
+#include <n2o/converter/from_js.hpp>
+#include <n2o/detail/void_ptr.hpp>
 
-#include "registered.hpp"
+#include <n2o/converter/registered.hpp>
 
 namespace n2o {
     

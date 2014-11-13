@@ -3,7 +3,7 @@
 
 #include <node.h>
 
-#include "object.hpp"
+#include <n2o/object.hpp>
 
 #define N2O_MODULE(init) N2O_NAMED_MODULE( N2O_MODULE_NAME, init )
 #define N2O_NAMED_MODULE(name, init) \

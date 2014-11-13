@@ -2,7 +2,7 @@
 # ifndef N2O_INVOKE_INCLUDED
 #  define N2O_INVOKE_INCLUDED
 
-#  include "config.h"
+#  include <n2o/config.h>
 
 #  include <boost/type_traits/is_member_function_pointer.hpp>
 #  include <boost/type_traits/is_same.hpp>

@@ -1,7 +1,7 @@
 #ifndef N2O_ARG_FROM_JS_INCLUDED
 #define N2O_ARG_FROM_JS_INCLUDED
 
-#include "converter/arg_from_js.hpp"
+#include <n2o/converter/arg_from_js.hpp>
 
 namespace n2o {
 

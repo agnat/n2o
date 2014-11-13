@@ -1,8 +1,8 @@
 #ifndef N2O_CONVERTER_FROM_JS_INCLUDED
 #define N2O_CONVERTER_FROM_JS_INCLUDED
 
-#include "rvalue_from_js_data.hpp"
-#include "convertible_function.hpp"
+#include <n2o/converter/rvalue_from_js_data.hpp>
+#include <n2o/converter/convertible_function.hpp>
 
 namespace n2o { namespace converter {
 

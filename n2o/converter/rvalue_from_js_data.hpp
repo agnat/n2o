@@ -6,9 +6,9 @@
 
 # include <boost/static_assert.hpp>
 
-# include "constructor_function.hpp"
-# include "../detail/referent_storage.hpp"
-# include "../detail/destroy.hpp"
+# include <n2o/converter/constructor_function.hpp>
+# include <n2o/detail/referent_storage.hpp>
+# include <n2o/detail/destroy.hpp>
 
 namespace n2o { namespace converter {
 

@@ -5,7 +5,10 @@
 #include <n2o/converter/registrations.hpp>
 #include <n2o/converter/builtin_converters.hpp>
 
-#define N2O_TRACE(x) // x
+// Apple mach workaround
+# include <iostream>
+
+#define N2O_TRACE(x) x
 namespace n2o { namespace converter {
 
 namespace {

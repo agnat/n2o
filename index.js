@@ -1,5 +1,5 @@
 require('bindings')('n2o')
 
-module.exports = exports = function () {
-  console.log(require('path').resolve(__dirname, 'n2o.gypi'))
+module.exports = function () {
+  console.log('-I ' + require('path').resolve(__dirname, 'n2o.gypi'));
 }

@@ -4,7 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/type.hpp>
 
-#include "registry.hpp"
+#include <n2o/converter/registry.hpp>
 
 
 namespace n2o { namespace converter {

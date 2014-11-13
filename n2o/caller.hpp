@@ -2,7 +2,7 @@
 # ifndef N2O_CALLER_INCLUDED
 #  define N2O_CALLER_INCLUDED
    
-#  include "config.h"
+#  include <n2o/config.h>
    
 #  include <boost/compressed_pair.hpp>
 #  include <boost/type_traits/is_same.hpp>
@@ -22,8 +22,8 @@
     
 #  include <v8.h>
     
-#  include "function_wrapper.hpp"
-#  include "arg_from_js.hpp"
+#  include <n2o/function_wrapper.hpp>
+#  include <n2o/arg_from_js.hpp>
 
 namespace n2o { namespace detail {
 
