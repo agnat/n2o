@@ -1,4 +1,4 @@
-#include "function_wrapper.hpp"
+#include "n2o/function_wrapper.hpp"
 
 namespace n2o { namespace detail {
 

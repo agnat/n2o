@@ -1,4 +1,4 @@
-#include "from_js.hpp"
+#include <n2o/converter/from_js.hpp>
 
 namespace n2o { namespace converter {
 

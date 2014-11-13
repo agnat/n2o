@@ -1,18 +1,23 @@
-# N₂O - Node add-on DSL ala boost python
+# N₂O - Node add-on DSL ala boost::python
 
-### hello.cpp:
+#### hello.cpp:
 ````c++
+#include <iostream>
+#include <n2o.hpp>
+
+using namespace n2o;
+
 void greet() { std::cerr << "Hello world." << std::endl; }
 
 void init(object exports) {
   exports["greet"] = function(greet);
 }
 
-N2O_MODULE(hello, init);
+N2O_MODULE(init);
 
 ````
 
-### hello_world.js:
+#### hello.js:
 ````javascript
 const hello = require('hello');
 

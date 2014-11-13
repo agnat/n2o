@@ -16,7 +16,7 @@
 namespace n2o { namespace detail {
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
-        (3, (0, N2O_MAX_ARITY, <src/signature.hpp>))
+        (3, (0, N2O_MAX_ARITY, <n2o/signature.hpp>))
 #  include BOOST_PP_ITERATE()
 
 }} // end of namespace detail, n2o
@@ -38,7 +38,7 @@ get_signature(RT(*)(BOOST_PP_ENUM_PARAMS_Z(1, N, T)), void * = 0) {
 # undef N
 
 # define BOOST_PP_ITERATION_PARAMS_2 \
-    (3, (0, 3, <src/signature.hpp>))
+    (3, (0, 3, <n2o/signature.hpp>))
 # include BOOST_PP_ITERATE()
 
 #else // BOOST_PP_ITERATION_DEPTH

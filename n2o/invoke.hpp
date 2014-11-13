@@ -28,7 +28,7 @@ struct invoke_tag :
 {};
 
 # define BOOST_PP_ITERATION_PARAMS_1 \
-    (3, (0, N2O_MAX_ARITY, <src/invoke.hpp>))
+    (3, (0, N2O_MAX_ARITY, <n2o/invoke.hpp>))
 # include BOOST_PP_ITERATE()
 
 
