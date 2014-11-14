@@ -12,9 +12,11 @@
 using namespace n2o;
 
 void greet() { std::cerr << "Hello world." << std::endl; }
+int  add(int a, int b) { return a + b; }
 
 void init(object exports) {
   exports["greet"] = function(greet);
+  exports["add"]   = function(add);
 }
 
 N2O_MODULE(init);
@@ -26,4 +28,5 @@ N2O_MODULE(init);
 const hello = require('hello');
 
 hello.greet();
+console.log(hello.add(2, 3));
 ````

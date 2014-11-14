@@ -5,4 +5,5 @@ const root  = require('path').resolve(__dirname, '.')
 sandbox.greet();
 console.log(sandbox.five());
 console.log(sandbox.hello());
-sandbox.add(2,3);
+var a = 2, b = 3;
+console.log(a + ' + ' + b + ' = ' + sandbox.add(a, b));
