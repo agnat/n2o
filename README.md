@@ -1,6 +1,8 @@
 # N₂O - Node add-on's ala boost python
 
-> N₂O, Nitrous oxide, commonly known as lolgas – consumable by both, engines and humans. More horsepowers for V8, more fun for developers. So, don't become like Bill Clinton. _Inhale!_
+> N₂O, Nitrous oxide, commonly known as lolgas – consumable by both, engines
+> and humans. More horsepowers for V8, more fun for developers. So, don't
+> become like Bill Clinton. Inhale!
 
 #### hello.cpp:
 ````c++

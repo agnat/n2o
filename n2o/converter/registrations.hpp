@@ -3,6 +3,9 @@
 
 #include <n2o/converter/convertible_function.hpp>
 #include <n2o/converter/constructor_function.hpp>
+#include <n2o/js_type_info.hpp>
+#include <n2o/type_id.hpp>
+#include <n2o/converter/to_js_function_type.hpp>
 
 namespace n2o { namespace converter {
 
