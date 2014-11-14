@@ -1,6 +1,6 @@
 { 'targets': [
-  { 'target_name' :   'hello_world'
-  , 'sources'     : [ 'hello_world.cpp' ]
+  { 'target_name' :   'sandbox'
+  , 'sources'     : [ 'sandbox.cpp' ]
   }
 ] }
 

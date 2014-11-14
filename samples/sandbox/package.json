@@ -1,0 +1,9 @@
+{ "name": "n2o_sandbox"
+, "version": "0.0.0"
+, "scripts": { "install" : "./install.sh" }
+, "dependencies":
+  { "bindings": "~1.2.1"
+  , "node-gyp": "~1.0.2"
+  , "n2o"     : "../../../n2o"
+  }
+}

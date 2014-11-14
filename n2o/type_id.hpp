@@ -42,9 +42,12 @@ type_info::operator==(type_info const& rhs) const {
     return *base_type_ == *rhs.base_type_;
 }
 
+namespace detail { char const* gcc_demangle(char const*); }
+
 inline
 char const* type_info::name() const {
-    return base_type_->name();
+    char const* mangled_name = base_type_->name();
+    return detail::gcc_demangle(mangled_name);
 }
 
 std::ostream& operator<<(std::ostream&, type_info const&);

@@ -1,4 +1,4 @@
-# N₂O - Node add-on DSL ala boost::python
+# N₂O - Node add-on DSL ala boost python
 
 #### hello.cpp:
 ````c++

@@ -13,7 +13,7 @@ void init(object exports) {
   exports["greet"] = function(greet);
   exports["add"]   = function(add);
   exports["five"]  = function(five);
-//  exports["hello"] = function(hello);
+  exports["hello"] = function(hello);
 }
 
 N2O_MODULE(init);

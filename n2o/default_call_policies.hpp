@@ -8,7 +8,7 @@
 #include <boost/type_traits/is_pointer.hpp>
 #include <boost/type_traits/is_reference.hpp>
 
-#include <n2o/to_v8_value.hpp>
+#include <n2o/to_js_value.hpp>
 
 namespace n2o {
 
@@ -31,7 +31,7 @@ struct default_result_converter {
         typedef typename boost::mpl::if_<
            boost:: mpl::or_<boost::is_pointer<R>, boost::is_reference<R> >,
            detail::specifiy_a_return_value_policy_to_wrap_functions_returning<R>,
-           n2o::to_v8_value< typename detail::value_arg<R>::type >
+           n2o::to_js_value< typename detail::value_arg<R>::type >
         >::type type;
     };
 };
@@ -52,6 +52,11 @@ struct default_call_policies {
     typedef default_result_converter result_converter;
 };
 
-}
+template <>
+struct default_result_converter::apply<char const*> {
+    typedef to_js_value<char const*const&> type;
+};
+
+} // end of namespace n2o
 
 #endif // N2O_DEFAULT_CALL_POLICIES_INCLUDED
