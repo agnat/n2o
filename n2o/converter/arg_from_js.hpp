@@ -55,9 +55,9 @@ template <typename T>
 inline
 typename arg_rvalue_from_js<T>::result_type
 arg_rvalue_from_js<T>::operator()() {
-    if (data_.stage1.construct != 0) 
+    if (data_.stage1.construct != 0) {
         data_.stage1.construct(source_, &data_.stage1);
-
+    }
     return n2o::detail::void_ptr_to_reference(data_.stage1.convertible, (result_type(*)())0);
 }
 
