@@ -80,6 +80,16 @@ struct bool_rvalue_from_js {
     static js_type_info const* get_jstype() { return 0; }
 };
 
+struct float_rvalue_from_js {
+    static unaryfunc* get_slot(v8::Handle<v8::Value> v) {
+        return v->IsNumber() ? & js_value_identity : 0;
+    }
+    static double extract(v8::Handle<v8::Value> intermediate) {
+        return intermediate->NumberValue();
+    }
+    static js_type_info const* get_jstype() { return 0; }
+};
+
 } // end of anonymous namespace
 
 v8::Local<v8::Value>
@@ -123,6 +133,11 @@ initialize_builtin_converters() {
     REGISTER_INT_CONVERTERS(short);
     REGISTER_INT_CONVERTERS(int);
     REGISTER_INT_CONVERTERS(long);
+
+    // floating point types
+    slot_rvalue_from_js<float,  float_rvalue_from_js>();
+    slot_rvalue_from_js<double, float_rvalue_from_js>();
+
 }
 
 }} // end of namespace n2o::converter

@@ -8,7 +8,7 @@ void void_int(int)   {}
 int  int_void(void)  { return 5; }
 int  int_int(int v)  { return v; }
 
-void simple_functions(object exports) {
+void basic_functions(object exports) {
   exports["void_void"] = function(void_void);
   exports["void_int"]  = function(void_int);
   exports["int_void"]  = function(int_void);
@@ -34,17 +34,19 @@ int unsigned_char_short_int_long(
     return a + b + c + d;
 }
 
-
+double  double_float_double(float a, double b)    { return a + b; }
 
 void rvalue_arguments(object exports) {
     exports["bool_bool"]   = function(bool_bool);
 
     exports["signed_char_short_int_long"]   = function(signed_char_short_int_long);
     exports["unsigned_char_short_int_long"] = function(unsigned_char_short_int_long);
+
+    exports["double_float_double"] = function(double_float_double);
 }
 
 void init(object exports) {
-    simple_functions(exports);
+    basic_functions(exports);
     rvalue_arguments(exports);
 }
 

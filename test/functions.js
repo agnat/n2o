@@ -3,7 +3,7 @@ const test    = require('tap').test
   , root      = require('path').resolve(__dirname, '.')
   , functions = require('bindings')({ module_root: root, bindings: 'functions' });
 
-test('simple functions', function (t) {
+test('basic functions', function (t) {
   t.plan(11);
 
   t.type(functions.void_void, 'function');
@@ -26,7 +26,7 @@ test('simple functions', function (t) {
 
 
 test('rvalue arguments', function (t) {
-  t.plan(10);
+  t.plan(13);
 
   t.type(functions.bool_bool, 'function');
   t.type(functions.bool_bool(true), 'boolean');
@@ -35,11 +35,15 @@ test('rvalue arguments', function (t) {
 
   t.type(functions.signed_char_short_int_long, 'function');
   t.type(functions.signed_char_short_int_long(1,1,1,1), 'number');
+  t.strictEquals(functions.signed_char_short_int_long(1,1,1,1), 4);
   t.strictEquals(functions.signed_char_short_int_long(-1,-1,-1,-1), -4);
 
   t.type(functions.unsigned_char_short_int_long, 'function');
   t.type(functions.unsigned_char_short_int_long(1,1,1,1), 'number');
   t.strictEquals(functions.unsigned_char_short_int_long(1,1,1,1), 4);
+
+  t.type(functions.double_float_double, 'function');
+  t.type(functions.double_float_double(Math.PI, Math.E), 'number');
 
   t.end();
 });
