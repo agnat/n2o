@@ -58,7 +58,7 @@ struct caller;
 
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
-        (3, (0, N2O_MAX_ARITY + 1, "n2o/caller.hpp"))
+        (3, (0, N2O_MAX_ARITY + 1, <n2o/detail/caller.hpp>))
 #  include BOOST_PP_ITERATE()
 
 #  undef N2O_ARG_CONVERTER

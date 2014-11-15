@@ -5,7 +5,7 @@
 
 #include <n2o/default_call_policies.hpp>
 
-#include <n2o/caller.hpp>
+#include <n2o/detail/caller.hpp>
 
 namespace n2o {
 

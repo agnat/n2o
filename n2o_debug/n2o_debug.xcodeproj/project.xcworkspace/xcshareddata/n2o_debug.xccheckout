@@ -5,9 +5,9 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>87A29E5C-7ED3-48EB-9963-4A506C09CF4A</string>
+	<string>0C21CA1D-C6DB-441F-99A3-76B2D58ABBFE</string>
 	<key>IDESourceControlProjectName</key>
-	<string>n2o</string>
+	<string>n2o_debug</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</key>
@@ -16,13 +16,13 @@
 		<string>git://github.com/creationix/nvm.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>n2o.xcworkspace</string>
+	<string>n2o_debug/n2o_debug.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</key>
-		<string>..</string>
+		<string>../../..</string>
 		<key>ECA5927655F95759709A34C616F22E273889166D</key>
-		<string>../../../../.nvm</string>
+		<string>../../../../../../.nvm</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:agnat/n2o.git</string>
