@@ -6,6 +6,7 @@
                     , 'src/builtin_converters.cpp'
                     , 'src/from_js.cpp'
                     , 'src/type_id.cpp'
+                    , 'src/errors.cpp'
                     , 'src/binding.cpp'
                     ]
   , 'include_dirs': [ '.']
