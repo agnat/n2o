@@ -70,6 +70,16 @@ struct unsigned_int_rvalue_from_js : int_rvalue_from_js_base {
     }
 };
 
+struct bool_rvalue_from_js {
+    static unaryfunc* get_slot(v8::Handle<v8::Value> v) {
+        return v->IsBoolean() ? & js_value_identity : 0;
+    }
+    static bool extract(v8::Handle<v8::Value> v) {
+        return v->BooleanValue();
+    }
+    static js_type_info const* get_jstype() { return 0; }
+};
+
 } // end of anonymous namespace
 
 v8::Local<v8::Value>
@@ -106,7 +116,7 @@ do_return_to_js(v8::Handle<v8::Value> x) {
 void
 initialize_builtin_converters() {
     // booleans
-    //slot_rvalue_from_js<bool, bool_rvalue_from_js>();
+    slot_rvalue_from_js<bool, bool_rvalue_from_js>();
 
     // integers
     REGISTER_INT_CONVERTERS(char);
