@@ -7,3 +7,4 @@ console.log(sandbox.five());
 console.log(sandbox.hello());
 var a = 2, b = 3;
 console.log(a + ' + ' + b + ' = ' + sandbox.add(a, b));
+sandbox.add("foo");

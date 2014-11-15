@@ -24,6 +24,7 @@
     
 #  include <n2o/function_wrapper.hpp>
 #  include <n2o/arg_from_js.hpp>
+#  include <n2o/errors.hpp>
 
 namespace n2o { namespace detail {
 
@@ -50,8 +51,11 @@ struct caller;
     N2O_NEXT(typename boost::mpl::next<first>::type, arg_iter, n) \
     typedef arg_from_js<typename arg_iter##n::type> c_t##n; \
     c_t##n c##n(args[n]); \
-    if ( ! c##n.convertible()) \
-        return; // TODO: throw
+    if ( ! c##n.convertible()) { \
+        js_type_error("conversion failed"); \
+        throw_error_already_set(); \
+    }
+
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
         (3, (0, N2O_MAX_ARITY + 1, "n2o/caller.hpp"))
@@ -79,8 +83,14 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
         static
         void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
-            caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
-            (*f)(args);
+            try {
+                caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
+                (*f)(args);
+            } catch (error_already_set const& ex) {
+
+            } catch (...) {
+                js_error("unknown c++ exception");
+            }
         }
 
     private:

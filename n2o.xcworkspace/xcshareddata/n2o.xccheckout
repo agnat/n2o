@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>87A29E5C-7ED3-48EB-9963-4A506C09CF4A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>n2o</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</key>
+		<string>github.com:agnat/n2o.git</string>
+		<key>ECA5927655F95759709A34C616F22E273889166D</key>
+		<string>git://github.com/creationix/nvm.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>n2o.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</key>
+		<string>..</string>
+		<key>ECA5927655F95759709A34C616F22E273889166D</key>
+		<string>../../../../.nvm</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:agnat/n2o.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ECA5927655F95759709A34C616F22E273889166D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>.nvm</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>069E24AF36A02A131EB68E2E9325BBEBA3443BF3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>n2o_</string>
+		</dict>
+	</array>
+</dict>
+</plist>

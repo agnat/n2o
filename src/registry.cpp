@@ -8,7 +8,7 @@
 // Apple mach workaround
 # include <iostream>
 
-#define N2O_TRACE(x) x
+#define N2O_TRACE(x) // x
 namespace n2o { namespace converter {
 
 namespace {
@@ -38,8 +38,8 @@ entries() {
 
 entry *
 get(type_info type, bool is_shared_ptr = false) {
-    registry_t::iterator p = entries().find(entry(type));
     N2O_TRACE(
+    registry_t::iterator p = entries().find(entry(type));
     std::cout << "looking up " << type << ": " 
               << (p == entries().end() || p->target_type != type ?
                  "... NOT found" : "... found") << std::endl;

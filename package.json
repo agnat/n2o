@@ -1,6 +1,6 @@
 { "name": "n2o"
 , "version": "0.0.0"
-, "description": "C++ add-on DSL ala boost python"
+, "description": "C++ add-on's ala boost python"
 , "repository":
   { "type": "git"
   , "url": "git://github.com/agnat/n2o.git"
@@ -8,8 +8,9 @@
   "scripts": {}
 , "contributors": []
 , "devDependencies":
-  { "bindings": "~1.2.1"
-  , "node-gyp": "~1.0.2"
+  { "bindings": "*"
+  , "node-gyp": "*"
+  , "tap"     : "*"
   }
 , "license": "MIT"
 }
