@@ -5,7 +5,7 @@
   { "type": "git"
   , "url": "git://github.com/agnat/n2o.git"
   },
-  "scripts": {}
+  "scripts": { "test": "tap test/*.js" }
 , "contributors": []
 , "devDependencies":
   { "bindings": "*"

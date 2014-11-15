@@ -87,7 +87,7 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
                 caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
                 (*f)(args);
             } catch (error_already_set const& ex) {
-
+                // javascript error already set.
             } catch (...) {
                 js_error("unknown c++ exception");
             }
@@ -132,12 +132,12 @@ struct caller_arity<N> {
                 return; // TODO: throw
             }
 
-
             v8::Handle<v8::Value> result = detail::invoke(
                     detail::invoke_tag<result_t, F>(),
                     result_converter(),
                     data_.first()
                     BOOST_PP_ENUM_TRAILING_PARAMS(N, c));
+
             data_.second().postcall(args /*inner_args*/, result);
         }
 

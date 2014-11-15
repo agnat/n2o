@@ -2,7 +2,7 @@
 #define N2O_CONFIG_INCLUDED
 
 #ifndef N2O_MAX_ARITY
-# define N2O_MAX_ARITY 3
+# define N2O_MAX_ARITY 10
 #endif
 
 #endif // N2O_CONFIG_INCLUDED
