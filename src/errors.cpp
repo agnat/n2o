@@ -18,4 +18,8 @@ void js_error(const char * msg) {
     v8::Isolate::GetCurrent()->ThrowException(v8::Exception::Error(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), msg)));
 }
 
+void js_range_error(const char * msg) {
+    v8::Isolate::GetCurrent()->ThrowException(v8::Exception::RangeError(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), msg)));
+}
+
 }

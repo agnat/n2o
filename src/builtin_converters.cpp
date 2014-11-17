@@ -72,7 +72,7 @@ struct unsigned_int_rvalue_from_js : int_rvalue_from_js_base {
 
 struct bool_rvalue_from_js {
     static unaryfunc* get_slot(v8::Handle<v8::Value> v) {
-        return v->IsBoolean() ? & js_value_identity : 0;
+        return v->IsBoolean() ? &js_value_identity : 0;
     }
     static bool extract(v8::Handle<v8::Value> v) {
         return v->BooleanValue();
@@ -82,10 +82,22 @@ struct bool_rvalue_from_js {
 
 struct float_rvalue_from_js {
     static unaryfunc* get_slot(v8::Handle<v8::Value> v) {
-        return v->IsNumber() ? & js_value_identity : 0;
+        return v->IsNumber() ? &js_value_identity : 0;
     }
     static double extract(v8::Handle<v8::Value> intermediate) {
         return intermediate->NumberValue();
+    }
+    static js_type_info const* get_jstype() { return 0; }
+};
+
+
+struct string_rvalue_from_js {
+    static unaryfunc* get_slot(v8::Handle<v8::Value> v) {
+        return v->IsString() ? &js_value_identity : 0;
+    }
+    static std::string extract(v8::Handle<v8::Value> intermediate) {
+        v8::String::Utf8Value utf8(intermediate);
+        return std::string(*utf8, utf8.length());
     }
     static js_type_info const* get_jstype() { return 0; }
 };
@@ -94,13 +106,13 @@ struct float_rvalue_from_js {
 
 v8::Local<v8::Value>
 do_return_to_js(char x) {
-    return v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), &x ,v8::String::kNormalString, 1);
+    return v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), &x, v8::String::kNormalString, 1);
 }
 
 v8::Local<v8::Value>
 do_return_to_js(char const* x) {
     if (x) {
-        return v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), x ,v8::String::kNormalString);
+        return v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), x, v8::String::kNormalString);
     }
     return v8::Undefined(v8::Isolate::GetCurrent());
 }
@@ -138,6 +150,8 @@ initialize_builtin_converters() {
     slot_rvalue_from_js<float,  float_rvalue_from_js>();
     slot_rvalue_from_js<double, float_rvalue_from_js>();
 
+    // strings
+    slot_rvalue_from_js<std::string, string_rvalue_from_js>();
 }
 
 }} // end of namespace n2o::converter

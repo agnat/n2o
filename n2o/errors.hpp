@@ -10,6 +10,7 @@ struct error_already_set {
 void throw_error_already_set();
 
 void js_type_error(const char * msg);
+void js_range_error(const char * msg);
 
 void js_error(const char * msg);
 
