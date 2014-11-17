@@ -3,14 +3,14 @@
 , "description": "C++ add-on's ala boost python"
 , "repository":
   { "type": "git"
-  , "url": "git://github.com/agnat/n2o.git"
+  , "url" : "git://github.com/agnat/n2o.git"
   },
   "scripts": { "test": "tap test/*.js" }
 , "contributors": []
-, "devDependencies":
+, "dependencies":
   { "bindings": "*"
   , "node-gyp": "*"
-  , "tap"     : "*"
   }
+, "devDependencies": { "tap": "*" }
 , "license": "MIT"
 }
