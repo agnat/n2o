@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const test = require('tap').test
     , spawn = require('child_process').spawn
     ;

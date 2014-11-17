@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 require('..')
 const test    = require('tap').test
   , root      = require('path').resolve(__dirname, '.')
