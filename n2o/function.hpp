@@ -4,26 +4,10 @@
 #include <n2o/config.h>
 
 #include <n2o/default_call_policies.hpp>
-
 #include <n2o/detail/caller.hpp>
+#include <n2o/detail/make_function.hpp>
 
 namespace n2o {
-
-namespace detail {
-
-// XXX duplicate
-template <typename F, typename CallPolicies, typename Sig>
-v8::Local<v8::FunctionTemplate>
-make_function(F f, CallPolicies const& p, Sig signature) {
-    typedef detail::caller<F, CallPolicies, Sig> caller;
-    return v8::FunctionTemplate::New(
-              v8::Isolate::GetCurrent()
-            , caller::call
-            , caller::create(f, CallPolicies())
-            );
-}
-
-} // end of namespace detail
 
 template <typename F>
 v8::Local<v8::FunctionTemplate>

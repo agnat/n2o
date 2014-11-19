@@ -2,19 +2,9 @@
 #define N2O_CLASS_INCLUDED
 
 #include <n2o/ctor.hpp>
+#include <n2o/detail/make_function.hpp>
 
 namespace n2o {
-
-// XXX duplicate
-template <typename F, typename CallPolicies, typename Sig>
-v8::Local<v8::FunctionTemplate>
-make_function(F f, CallPolicies const& p, Sig signature) {
-    return v8::FunctionTemplate::New(
-              v8::Isolate::GetCurrent()
-            , detail::caller<F, CallPolicies, Sig>::call
-            , detail::caller<F, CallPolicies, Sig>::create(f)
-            );
-}
 
 enum no_ctor_t { no_ctor };
 

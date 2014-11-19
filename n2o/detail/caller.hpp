@@ -81,7 +81,9 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
         static
         v8::Handle<v8::Value>
         create(F f, CallPolicies p) {
-            return v8::External::New(v8::Isolate::GetCurrent(), new caller(f, p)); // XXX never deleted
+            return v8::External::New(
+                      v8::Isolate::GetCurrent()
+                    , new caller(f, p));
         }
 
 
