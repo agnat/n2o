@@ -57,6 +57,7 @@ test('rvalue arguments', function(t) {
 
   t.type(functions.string_string_constref, 'function');
   t.type(functions.string_string_constref('plonk'), 'string');
+
   t.strictEquals(functions.string_string_constref('plonk'), 'plonk');
 
   t.end();
