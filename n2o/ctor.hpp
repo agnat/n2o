@@ -32,10 +32,10 @@ template <N2O_OVERLOAD_TYPES>
 class ctor {
     public:
         static
-        v8::Handle<v8::Value>
+        void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
             std::cout << "ctor called" << std::endl;
-            return v8::Undefined(v8::Isolate::GetCurrent());
+            //return v8::Undefined(v9::Isolate::GetCurrent());
         }
 };
 

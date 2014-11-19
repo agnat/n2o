@@ -26,7 +26,6 @@ class class_ {
             classname_(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), classname))
         {
             this->initialize(ctor<>());
-            // XXX detail::get_context()->Set( classname_, t_->GetFunction());
         }
         ~class_() {
         }
@@ -34,14 +33,16 @@ class class_ {
         template <typename F>
         class_ &
         function(const char * name, F f) {
-            /*
             v8::Local<v8::FunctionTemplate> t = detail::make_function(
                     f, default_call_policies(), detail::get_signature(f, (T*)NULL));
-            t_->PrototypeTemplate()->Set(v8::String::NewSymbol(name), t);
-            */
+            v8::Local<v8::Value> symbol = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name);
+            t_->PrototypeTemplate()->Set(symbol, t);
             return *this;
         }
 
+        v8::Handle<v8::FunctionTemplate> function_template() const {
+            return t_;
+        }
     private:
         v8::Local<v8::FunctionTemplate> t_;
         v8::Local<v8::String> classname_;

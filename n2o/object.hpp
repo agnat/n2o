@@ -3,6 +3,8 @@
 
 namespace n2o {
 
+template <typename> class class_;
+
 namespace detail {
 
 struct property_value {
@@ -13,6 +15,11 @@ struct property_value {
 
   property_value operator=(v8::Handle<v8::FunctionTemplate> v) {
     obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v->GetFunction());
+    return *this;
+  }
+  template <typename T>
+  property_value operator=(class_<T> const& v) {
+    obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.function_template()->GetFunction());
     return *this;
   }
 };
