@@ -5,8 +5,6 @@ using namespace n2o;
 
 void greet() { std::cerr << "hello world" << std::endl; }
 
-void init(object exports) {
+N2O_MODULE(object exports) {
   exports["greet"] = function(greet);
 }
-
-N2O_MODULE(init);

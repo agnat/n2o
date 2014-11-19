@@ -19,12 +19,10 @@ using namespace n2o;
 void greet() { std::cerr << "Hello world." << std::endl; }
 int  add(int a, int b) { return a + b; }
 
-void init(object exports) {
+N2O_MODULE(object exports) {
   exports["greet"] = function(greet);
   exports["add"]   = function(add);
 }
-
-N2O_MODULE(init);
 
 ````
 

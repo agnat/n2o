@@ -8,10 +8,9 @@ int  five() { return 5; }
 char const* hello() { return "hello"; }
 int  add(int a, int b) { return a + b; }
 
-struct world {
-};
+struct world {};
 
-void init(object exports) {
+N2O_MODULE(object exports) {
   exports["greet"] = function(greet);
   exports["five"]  = function(five);
   exports["hello"] = function(hello);
@@ -19,5 +18,3 @@ void init(object exports) {
 
   exports["World"] = class_<world>("World");
 }
-
-N2O_MODULE(init);

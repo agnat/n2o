@@ -54,9 +54,7 @@ void rvalue_arguments(object exports) {
 
 //=== Init =====================================================================
 
-void init(object exports) {
+N2O_MODULE(object exports) {
     basic_functions(exports);
     rvalue_arguments(exports);
 }
-
-N2O_MODULE(init);
