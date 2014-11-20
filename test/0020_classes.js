@@ -12,11 +12,6 @@ test("class hello world", function(t) {
   t.strictEquals(classes.World.name, 'World');
   t.type(new classes.World(), 'object');
   t.throws(function() { classes.World() }, "constructor called without 'new' must throw");
-  console.log(classes.World);
-  console.log(classes.World.prototype);
-  console.log(classes.World.prototype.__proto__);
-  var world = new classes.World();
-  console.log(world);
 
   t.end();
 });
