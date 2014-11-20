@@ -35,7 +35,11 @@ class ctor {
         void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
             std::cout << "ctor called" << std::endl;
-            //return v8::Undefined(v9::Isolate::GetCurrent());
+            if ( ! args.IsConstructCall()) {
+                js_error("constructor called without 'new'");
+                //throw_error_already_set();
+                return; // XXX better throw...
+            }
         }
 };
 

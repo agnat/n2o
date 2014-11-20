@@ -1,6 +1,8 @@
 #include <iostream>
 #include <n2o.hpp>
 
+namespace {
+
 using namespace n2o;
 
 //=== Basic Functions ==========================================================
@@ -51,6 +53,8 @@ void rvalue_arguments(object exports) {
     exports["string_string"]                = function(string_string);
     exports["string_string_constref"]       = function(string_string_constref);
 }
+
+} // end of anonymous namespace
 
 //=== Init =====================================================================
 
