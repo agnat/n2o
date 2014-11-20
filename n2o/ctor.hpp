@@ -30,17 +30,17 @@ class ctor;
 
 template <N2O_OVERLOAD_TYPES>
 class ctor {
-    public:
-        static
-        void
-        call(v8::FunctionCallbackInfo<v8::Value> const& args) {
-            std::cout << "ctor called" << std::endl;
-            if ( ! args.IsConstructCall()) {
-                js_error("constructor called without 'new'");
-                //throw_error_already_set();
-                return; // XXX better throw...
-            }
+public:
+    static
+    void
+    call(v8::FunctionCallbackInfo<v8::Value> const& args) {
+        std::cout << "ctor called" << std::endl;
+        if ( ! args.IsConstructCall()) {
+            js_error("constructor called without 'new'");
+            //throw_error_already_set();
+            return; // XXX better throw...
         }
+    }
 };
 
 } // end of namespace n2o
