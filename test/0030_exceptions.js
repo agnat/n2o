@@ -12,16 +12,17 @@ test('standard exceptions', function(t) {
   t.throws(exceptions.throw_bad_alloc, new Error('memory allocation failed'));
 
   t.type(exceptions.throw_bad_numeric_cast, 'function');
-  t.throws(exceptions.throw_bad_numeric_cast);
+  t.throws(exceptions.throw_bad_numeric_cast,
+    new RangeError('bad numeric conversion: negative overflow'));
 
   t.type(exceptions.throw_out_of_range, 'function');
-  t.throws(exceptions.throw_out_of_range);
+  t.throws(exceptions.throw_out_of_range, new RangeError('kaputt'));
 
   t.end();
 });
 
 test('custom exception translator', function(t) {
-  t.plan(5);
+  t.plan(3);
 
   t.type(exceptions.throw_out_of_cheese, 'function');
   t.throws(exceptions.throw_out_of_cheese, new Error('unknown c++ exception'));
