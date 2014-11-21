@@ -9,13 +9,26 @@ test('standard exceptions', function(t) {
   t.plan(6);
 
   t.type(exceptions.throw_bad_alloc, 'function');
-  t.throws(exceptions.throw_bad_alloc);
+  t.throws(exceptions.throw_bad_alloc, new Error('memory allocation failed'));
 
   t.type(exceptions.throw_bad_numeric_cast, 'function');
   t.throws(exceptions.throw_bad_numeric_cast);
 
   t.type(exceptions.throw_out_of_range, 'function');
   t.throws(exceptions.throw_out_of_range);
+
+  t.end();
+});
+
+test('custom exception translator', function(t) {
+  t.plan(5);
+
+  t.type(exceptions.throw_out_of_cheese, 'function');
+  t.throws(exceptions.throw_out_of_cheese, new Error('unknown c++ exception'));
+
+  exceptions.register_translator();
+
+  t.throws(exceptions.throw_out_of_cheese, new Error('out of cheese'));
 
   t.end();
 });

@@ -12,10 +12,6 @@ struct property_value {
   v8::Local<v8::Object> obj_;
   const char *          name_;
 
-  property_value operator=(v8::Handle<v8::FunctionTemplate> v) {
-    obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v->GetFunction());
-    return *this;
-  }
   property_value operator=(function const& v) {
     obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.function_template()->GetFunction());
     return *this;

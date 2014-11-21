@@ -24,12 +24,7 @@
     
 #  include <n2o/function_wrapper.hpp>
 #  include <n2o/arg_from_js.hpp>
-
-
-// TODO: remove after exception handling is refactored
 #  include <n2o/errors.hpp>
-#  include <boost/cast.hpp>
-#  include <stdexcept>
 
 namespace n2o { namespace detail {
 
@@ -75,6 +70,22 @@ struct caller_base_select {
     typedef typename caller_arity<arity>::template impl<F,CallPolicies,Sig> type;
 };
 
+// XXX
+template <typename F>
+struct bind_args {
+    bind_args(F * f, v8::FunctionCallbackInfo<v8::Value> const& args) :
+              f_(f)
+            , args_(args)
+    {}
+
+    void operator()() const { (*f_)(args_); }
+
+private:
+    bind_args();
+    F * f_;
+    v8::FunctionCallbackInfo<v8::Value> const& args_;
+};
+
 template <typename F, typename CallPolicies, typename Sig>
 struct caller : caller_base_select<F, CallPolicies, Sig>::type {
     public:
@@ -86,24 +97,11 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
                     , new caller(f, p));
         }
 
-
         static
         void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
-            try {
-                caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
-                (*f)(args);
-            } catch (error_already_set const& ex) {
-                // javascript error already set.
-            } catch(const std::bad_alloc&) {
-                js_error("memory allocation failed");                
-            } catch(const boost::bad_numeric_cast& x) {
-                js_range_error(x.what());
-            } catch(const std::out_of_range& x) {
-                js_range_error(x.what());
-            } catch (...) {
-                js_error("unknown c++ exception");
-            }
+            caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
+            handle_exception(bind_args<caller>(f, args));
         }
 
     private:
