@@ -19,7 +19,7 @@ struct out_of_cheese : std::exception {
 void translate(out_of_cheese const& ex) { js_error(ex.what()); }
 void throw_out_of_cheese() { throw out_of_cheese(); }
 void register_translator() {
-    register_exception_translator<out_of_cheese>(&translate);
+    register_exception_translator<out_of_cheese>(translate);
 }
 
 //==============================================================================
