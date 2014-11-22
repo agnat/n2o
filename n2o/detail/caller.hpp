@@ -11,6 +11,7 @@
 #  include <boost/mpl/at.hpp>
 #  include <boost/mpl/next.hpp>
 #  include <boost/mpl/size.hpp>
+#  include <boost/bind.hpp>
 
 #  include <boost/preprocessor/iterate.hpp>
 #  include <boost/preprocessor/cat.hpp>
@@ -70,22 +71,6 @@ struct caller_base_select {
     typedef typename caller_arity<arity>::template impl<F,CallPolicies,Sig> type;
 };
 
-// XXX
-template <typename F>
-struct bind_args {
-    bind_args(F * f, v8::FunctionCallbackInfo<v8::Value> const& args) :
-              f_(f)
-            , args_(args)
-    {}
-
-    void operator()() const { (*f_)(args_); }
-
-private:
-    bind_args();
-    F * f_;
-    v8::FunctionCallbackInfo<v8::Value> const& args_;
-};
-
 template <typename F, typename CallPolicies, typename Sig>
 struct caller : caller_base_select<F, CallPolicies, Sig>::type {
     public:
@@ -101,7 +86,7 @@ struct caller : caller_base_select<F, CallPolicies, Sig>::type {
         void
         call(v8::FunctionCallbackInfo<v8::Value> const& args) {
             caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
-            handle_exception(bind_args<caller>(f, args));
+            handle_exception(boost::bind<void>(*f, args)); // TODO: bind early
         }
 
     private:
