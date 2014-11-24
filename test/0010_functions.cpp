@@ -54,6 +54,17 @@ void rvalue_arguments(object exports) {
     exports["string_string_constref"]       = function(string_string_constref);
 }
 
+//=== Function Names ===========================================================
+
+void named_function() {}
+void anonymous_function() {}
+
+void function_names(object exports) {
+    exports["named_function"] = function("function_with_a_name", named_function);
+    exports["anonymous_function"] = function(anonymous_function);
+}
+
+
 } // end of anonymous namespace
 
 //=== Init =====================================================================
@@ -61,4 +72,5 @@ void rvalue_arguments(object exports) {
 N2O_MODULE(object exports) {
     basic_functions(exports);
     rvalue_arguments(exports);
+    function_names(exports);
 }

@@ -64,3 +64,14 @@ test('rvalue arguments', function(t) {
   t.end();
 });
 
+test("function names", function(t) {
+  t.plan(4);
+
+  t.type(functions.named_function, 'function');
+  t.strictEquals(functions.named_function.name, (function function_with_a_name(){}).name);
+
+  t.type(functions.anonymous_function, 'function');
+  t.strictEquals(functions.anonymous_function.name, (function(){}).name);
+
+  t.end();
+});
