@@ -1,5 +1,5 @@
 { "name": "n2o"
-, "version": "0.0.0"
+, "version": "0.0.0-dev"
 , "description": "C++ add-on's ala boost python"
 , "repository":
   { "type": "git"
