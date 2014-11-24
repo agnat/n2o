@@ -1,15 +1,7 @@
 { 'targets': [
   { 'target_name' : 'n2o'
-  , 'includes'    : ['n2o.gypi']
   , 'sources'     :
-    [ 'src/binding.cpp'
-    , 'src/builtin_converters.cpp'
-    , 'src/errors.cpp'
-    , 'src/from_js.cpp'
-    , 'src/function_wrapper.cpp'
-    , 'src/registry.cpp'
-    , 'src/type_id.cpp'
-    , 'n2o/arg_from_js.hpp'
+    [ 'n2o/arg_from_js.hpp'
     , 'n2o/class.hpp'
     , 'n2o/config.h'
     , 'n2o/converter/arg_from_js.hpp'
@@ -40,14 +32,23 @@
     , 'n2o/js_type_info.hpp'
     , 'n2o/module.hpp'
     , 'n2o/object.hpp'
+    , 'n2o/objects/object_base.hpp'
     , 'n2o/preprocessor.hpp'
     , 'n2o/signature.hpp'
     , 'n2o/to_js_value.hpp'
     , 'n2o/type_id.hpp'
     , 'n2o/type_list.hpp'
     , 'n2o/value_arg.hpp'
+    , 'src/binding.cpp'
+    , 'src/builtin_converters.cpp'
+    , 'src/errors.cpp'
+    , 'src/from_js.cpp'
+    , 'src/function_wrapper.cpp'
+    , 'src/registry.cpp'
+    , 'src/type_id.cpp'
     ]
-  , 'all_dependent_settings': { 'includes'    : ['n2o.gypi'] }
+  , 'includes': ['n2o.gypi']
+  , 'all_dependent_settings': { 'includes': ['n2o.gypi'] }
   }
 ]}
 

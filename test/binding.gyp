@@ -1,4 +1,4 @@
-{ 'includes': ['../n2o.gypi']
+{ 'target_defaults': {'dependencies': ['../binding.gyp:n2o']}
 , 'targets':
   [ {'target_name': 'functions',   'sources': ['0010_functions.cpp']}
   , {'target_name': 'classes',     'sources': ['0020_classes.cpp']}
