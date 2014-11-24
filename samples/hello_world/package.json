@@ -1,6 +1,5 @@
 { "name": "n2o_hello_world"
 , "version": "0.0.0"
-, "scripts": { "install" : "./install.sh" }
 , "dependencies":
   { "bindings": "~1.2.1"
   , "node-gyp": "~1.0.2"

@@ -1,6 +1,6 @@
-{ 'includes': ['n2o.gypi']
-, 'targets': [
+{ 'targets': [
   { 'target_name' : 'n2o'
+  , 'includes'    : ['n2o.gypi']
   , 'sources'     :
     [ 'src/binding.cpp'
     , 'src/builtin_converters.cpp'
@@ -47,7 +47,7 @@
     , 'n2o/type_list.hpp'
     , 'n2o/value_arg.hpp'
     ]
-  , 'include_dirs': ['.']
+  , 'all_dependent_settings': { 'includes'    : ['n2o.gypi'] }
   }
 ]}
 

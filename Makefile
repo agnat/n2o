@@ -1,5 +1,10 @@
-BUILDTYPE?=Release
-N2O_TARGET=build/$(BUILDTYPE)/n2o.node
+BUILDTYPE ?=Release
+N2O_TARGET =build/$(BUILDTYPE)/n2o.node
+NODE_GYPE_OPTS =
+
+ifeq ($(BUILDTYPE),Debug)
+	NODE_GYPE_OPTS+= --debug
+endif
 
 all: $(N2O_TARGET)
 
@@ -26,10 +31,10 @@ xcode:
 #==============================================================================
 
 build/Makefile:
-	node-gyp configure
+	node-gyp configure $(NODE_GYPE_OPTS)
 
 $(N2O_TARGET): build/Makefile
-	node-gyp build
+	node-gyp build $(NODE_GYPE_OPTS)
 
 node_modules:
 	npm link
