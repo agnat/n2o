@@ -73,27 +73,25 @@ struct caller_base_select {
 
 template <typename F, typename CallPolicies, typename Sig>
 struct caller : caller_base_select<F, CallPolicies, Sig>::type {
-    public:
-        static
-        v8::Handle<v8::Value>
-        create(F f, CallPolicies p) {
-            return v8::External::New(
-                      v8::Isolate::GetCurrent()
-                    , new caller(f, p));
-        }
+public:
+    static
+    v8::Handle<v8::Value>
+    create(F f, CallPolicies p) {
+        return v8::External::New(v8::Isolate::GetCurrent(), new caller(f, p));
+    }
 
-        static
-        void
-        call(v8::FunctionCallbackInfo<v8::Value> const& args) {
-            caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
-            handle_exception(boost::bind<void>(*f, args)); // TODO: bind early
-        }
+    static
+    void
+    call(v8::FunctionCallbackInfo<v8::Value> const& args) {
+        caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
+        handle_exception(boost::bind<void>(*f, args));
+    }
 
-    private:
-        typedef typename caller_base_select<F, CallPolicies, Sig>::type base;
+private:
+    typedef typename caller_base_select<F, CallPolicies, Sig>::type base;
 
-        caller();
-        caller(F f, CallPolicies p) : base(f, p) {}
+    caller();
+    caller(F f, CallPolicies p) : base(f, p) {}
 };
 
 }} // end of namespace detail, n2o
@@ -136,6 +134,8 @@ struct caller_arity<N> {
 
             data_.second().postcall(args /*inner_args*/, result);
         }
+
+        static unsigned min_arity() { return N; }
 
     private:
         boost::compressed_pair<F,Policies> data_;

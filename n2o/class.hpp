@@ -23,10 +23,10 @@ public:
     template <typename F>
     class_ &
     function(const char * name, F f) {
-        v8::Local<v8::FunctionTemplate> t = detail::make_function(
+        v8::Local<v8::Function> function = detail::make_function(
                 f, default_call_policies(), detail::get_signature(f, (T*)NULL));
         v8::Local<v8::String> symbol = v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name);
-        t_->PrototypeTemplate()->Set(symbol, t);
+        t_->PrototypeTemplate()->Set(symbol, function);
         return *this;
     }
 

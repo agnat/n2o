@@ -13,7 +13,7 @@ struct property_value {
   const char *          name_;
 
   property_value operator=(function const& v) {
-    obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.function_template()->GetFunction());
+    obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.js_function());
     return *this;
   }
   template <typename T>
