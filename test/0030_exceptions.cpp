@@ -23,7 +23,7 @@ void register_translator() {
 }
 
 //==============================================================================
-N2O_MODULE(object exports) {
+N2O_ADD_ON(object exports) {
     exports["throw_bad_alloc"]        = function(throw_bad_alloc);
     exports["throw_bad_numeric_cast"] = function(throw_bad_numeric_cast);
     exports["throw_out_of_range"]     = function(throw_out_of_range);

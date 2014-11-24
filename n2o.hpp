@@ -14,6 +14,6 @@
 
 #include <n2o/object.hpp>
 
-#include <n2o/module.hpp>
+#include <n2o/add_on.hpp>
 
 #endif // N2O_INCLUDED

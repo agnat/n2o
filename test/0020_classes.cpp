@@ -10,7 +10,7 @@ private:
     std::string greeting_;
 };
 
-N2O_MODULE(object exports) {
+N2O_ADD_ON(object exports) {
     exports["World"] =
         class_<world>("World")
             . function("greet", &world::greet)

@@ -1,5 +1,5 @@
 { 'include_dirs'     : [ '.' ]
-, 'defines'          : [ 'N2O_MODULE_NAME=>(_target_name)']
+, 'defines'          : [ 'N2O_ADD_ON_NAME=>(_target_name)']
 , 'cflags!'          : [ '-fno-rtti', '-fno-exceptions' ]
 , 'target_conditions': [['OS=="mac"',
   { 'xcode_settings':

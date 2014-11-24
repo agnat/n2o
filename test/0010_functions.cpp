@@ -69,7 +69,7 @@ void function_names(object exports) {
 
 //=== Init =====================================================================
 
-N2O_MODULE(object exports) {
+N2O_ADD_ON(object exports) {
     basic_functions(exports);
     rvalue_arguments(exports);
     function_names(exports);

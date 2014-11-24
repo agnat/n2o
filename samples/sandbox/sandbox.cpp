@@ -10,7 +10,7 @@ int  add(int a, int b) { return a + b; }
 
 struct world {};
 
-N2O_MODULE(object exports) {
+N2O_ADD_ON(object exports) {
   exports["greet"] = function(greet);
   exports["five"]  = function(five);
   exports["hello"] = function(hello);
