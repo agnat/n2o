@@ -9,8 +9,8 @@
 #  include <boost/type_traits/is_convertible.hpp>
 #  include <boost/mpl/if.hpp>
 
-#include <n2o/preprocessor.hpp>
-#include <n2o/type_list.hpp>
+#include <n2o/detail/preprocessor.hpp>
+#include <n2o/detail/type_list.hpp>
 
 #  define N2O_LIST_INC(n) \
         BOOST_PP_CAT(boost::mpl::vector, BOOST_PP_INC(n))

@@ -1,5 +1,5 @@
 #ifndef N2O_PREPROCESSOR_INCLUDED
-#define N2O_PREPROCESSOR_INCLUDED
+# define N2O_PREPROCESSOR_INCLUDED
 
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
@@ -24,5 +24,7 @@
         N2O_ITEM(volatile),      \
         N2O_ITEM(const volatile) \
     )
+
+# define N2O_FIXED(z, n, text) text
 
 #endif //  N2O_PREPROCESSOR_INCLUDED
