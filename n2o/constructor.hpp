@@ -1,27 +1,27 @@
-#ifndef N2O_CLASS_INCLUDED
-#define N2O_CLASS_INCLUDED
+#ifndef N2O_CONSTRUCTOR_INCLUDED
+#define N2O_CONSTRUCTOR_INCLUDED
 
-#include <n2o/ctor.hpp>
+#include <n2o/init.hpp>
 #include <n2o/detail/make_function.hpp>
 
 namespace n2o {
 
-enum no_ctor_t { no_ctor };
+enum no_init_t { no_init };
 
 template <typename T>
-class class_ {
+class constructor {
 public:
-    class_(const char * classname) :
+    constructor(const char * classname) :
         t_(v8::FunctionTemplate::New(v8::Isolate::GetCurrent())),
         classname_(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), classname))
     {
-        this->initialize(ctor<>());
+        this->initialize(init<>());
     }
-    ~class_() {
+    ~constructor() {
     }
 
     template <typename F>
-    class_ &
+    constructor &
     function(const char * name, F f) {
         v8::Local<v8::Function> function = detail::make_function(
                 f, default_call_policies(), detail::get_signature(f, (T*)NULL));
@@ -37,15 +37,15 @@ private:
     v8::Local<v8::FunctionTemplate> t_;
     v8::Local<v8::String> classname_;
 
-    template <typename Ctor>
+    template <typename Init>
     void
-    initialize(Ctor const& ctor) {
+    initialize(Init const& init) {
         t_->SetClassName(classname_);
         t_->InstanceTemplate()->SetInternalFieldCount(1);
-        t_->SetCallHandler(Ctor::call);
+        t_->SetCallHandler(Init::call);
     }
     void
-    initialize(no_ctor_t) {
+    initialize(no_init_t) {
         t_->SetClassName(classname_);
     }
 
@@ -54,4 +54,4 @@ private:
 
 } // end of namespace n2o
 
-#endif // N2O_CLASS_INCLUDED
+#endif // N2O_CONSTRUCTOR_INCLUDED

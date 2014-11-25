@@ -15,26 +15,35 @@ public:
     template <typename F>
     explicit
     function(F f) :
-        js_function_(detail::make_function( f
-                                       , default_call_policies()
-                                       , detail::get_signature(f)))
+        v8_function_(detail::make_function( f
+                                          , default_call_policies()
+                                          , detail::get_signature(f)))
     {} 
 
     template <typename F>
     explicit
     function(char const* name, F f) : // C++11: function(f) {
-        js_function_(detail::make_function( f
-                                       , default_call_policies()
-                                       , detail::get_signature(f)))
+        v8_function_(detail::make_function( f
+                                          , default_call_policies()
+                                          , detail::get_signature(f)))
     {
-        js_function_->SetName(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name));
+        v8_function_->SetName(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name));
     } 
 
 
+    template <typename F>
+    function &
+    add_overload(F f) {
+        
+        return *this;
+    }
+
+
     v8::Handle<v8::Function>
-    js_function() const { return js_function_; }
+    js_function() const { return v8_function_; }
+
 private:
-    v8::Local<v8::Function> js_function_;
+    v8::Local<v8::Function> v8_function_;
 };
 
 } // end of namespace n2o

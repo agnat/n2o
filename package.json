@@ -1,16 +1,22 @@
-{ "name": "n2o"
-, "version": "0.0.0-dev"
+{ "name"       : "n2o"
+, "version"    : "0.0.0-dev"
 , "description": "C++ add-on's ala boost python"
 , "repository":
   { "type": "git"
   , "url" : "git://github.com/agnat/n2o.git"
   },
-  "scripts": { "test": "tap test/*.js" }
+  "scripts":
+  { "test": "tap test/*.js"
+  , "sources": "scripts/sources.js"
+  }
 , "contributors": []
 , "dependencies":
   { "bindings": "*"
   , "node-gyp": "*"
   }
-, "devDependencies": { "tap": "*" }
+, "devDependencies":
+  { "tap" : "*"
+  , "glob": "*"
+  }
 , "license": "MIT"
 }

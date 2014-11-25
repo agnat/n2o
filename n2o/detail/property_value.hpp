@@ -2,7 +2,7 @@
 #define N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
 
 #include <n2o/function.hpp>
-#include <n2o/class.hpp>
+#include <n2o/constructor.hpp>
 
 namespace n2o { namespace detail {
 
@@ -17,7 +17,7 @@ struct property_value {
     return *this;
   }
   template <typename T>
-  property_value operator=(class_<T> const& v) {
+  property_value operator=(constructor<T> const& v) {
     obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.function_template()->GetFunction());
     return *this;
   }

@@ -12,11 +12,14 @@ test: $(N2O_TARGET) node_modules
 	npm test
 
 clean:
-	rm -rf {build,node_modules}
+	rm -rf build
 	rm -rf test/build
-	rm -rf samples/hello_world/{build,node_modules}
-	rm -rf samples/sandbox/{build,node_modules}
+	rm -rf samples/hello_world/build
+	rm -rf samples/sandbox/build
 	find . -name npm-debug.log -exec rm -rf {} \;
+
+distclean: clean
+	rm -rf node_modules samples/{sandbox,hello_world}/node_modules
 
 xcode:
 	node-gyp configure --debug -- -f xcode
@@ -24,7 +27,7 @@ xcode:
 	node-gyp configure --debug -C samples/sandbox -- -f xcode
 	open n2o.xcodeproj
 
-.PHONY: all test clean xcode
+.PHONY: all test clean distclean xcode
 
 #==============================================================================
 

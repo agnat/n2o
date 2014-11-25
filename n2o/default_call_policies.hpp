@@ -16,20 +16,11 @@ namespace detail {
   template <class T> struct specifiy_a_return_value_policy_to_wrap_functions_returning {};
 }
 
-struct dummy_result_converter {
-    template <typename T>
-    v8::Handle<v8::Value>
-    operator()(T v) const {
-        std::cout << "result converter()" << std::endl;
-    }
-};
-
 struct default_result_converter {
     template <typename R>
     struct apply {
-        //typedef dummy_result_converter type;
         typedef typename boost::mpl::if_<
-           boost:: mpl::or_<boost::is_pointer<R>, boost::is_reference<R> >,
+           boost::mpl::or_<boost::is_pointer<R>, boost::is_reference<R> >,
            detail::specifiy_a_return_value_policy_to_wrap_functions_returning<R>,
            n2o::to_js_value< typename detail::value_arg<R>::type >
         >::type type;
@@ -54,7 +45,7 @@ struct default_call_policies {
 
 template <>
 struct default_result_converter::apply<char const*> {
-    typedef to_js_value<char const*const&> type;
+    typedef to_js_value<char const* const&> type;
 };
 
 } // end of namespace n2o

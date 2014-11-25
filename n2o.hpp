@@ -10,7 +10,7 @@
 #include <n2o/exception_translator.hpp>
 
 #include <n2o/function.hpp>
-#include <n2o/class.hpp>
+#include <n2o/constructor.hpp>
 
 #include <n2o/object.hpp>
 
