@@ -1,5 +1,5 @@
-#include <iostream>
 #include <n2o.hpp>
+#include <iostream>
 
 using namespace n2o;
 

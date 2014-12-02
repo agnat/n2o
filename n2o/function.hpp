@@ -21,7 +21,6 @@ public:
     {} 
 
     template <typename F>
-    explicit
     function(char const* name, F f) : // C++11: function(f) {
         v8_function_(detail::make_function( f
                                           , default_call_policies()
