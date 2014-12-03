@@ -1,5 +1,7 @@
 #ifndef N2O_RVALUE_FROM_JS_DATA_INCLUDED
-#define N2O_RVALUE_FROM_JS_DATA_INCLUDED
+# define N2O_RVALUE_FROM_JS_DATA_INCLUDED
+
+# include <stddef.h>
 
 # include <boost/type_traits/add_reference.hpp>
 # include <boost/type_traits/add_cv.hpp>
@@ -29,14 +31,16 @@ struct rvalue_from_js_storage {
 
 template <typename T>
 struct rvalue_from_js_data : rvalue_from_js_storage<T> {
-    //BOOST_STATIC_ASSERT(BOOST_PYTHON_OFFSETOF(rvalue_from_js_storage<T>,stage1) == 0);
+    BOOST_STATIC_ASSERT(offsetof(rvalue_from_js_storage<T>, stage1) == 0);
 
     rvalue_from_js_data(rvalue_from_js_stage1_data const&);
 
     rvalue_from_js_data(void* convertible);
     ~rvalue_from_js_data();
   private:
-    typedef typename boost::add_reference<typename boost::add_cv<T>::type>::type ref_type;
+    typedef typename boost::add_reference<
+        typename boost::add_cv<T>::type
+    >::type ref_type;
 };
 
 template <typename T>
@@ -54,10 +58,11 @@ rvalue_from_js_data<T>::rvalue_from_js_data(void * convertible) {
 template <typename T>
 inline
 rvalue_from_js_data<T>::~rvalue_from_js_data() {
-    if (this->stage1.convertible == this->storage.bytes)
+    if (this->stage1.convertible == this->storage.bytes) {
         n2o::detail::destroy_referent<ref_type>(this->storage.bytes);
+    }
 }
 
-}} // end of namespace converter, n2o
+}} // end of namespace n2o::converter
 
 #endif // N2O_RVALUE_FROM_JS_DATA_INCLUDED

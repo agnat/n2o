@@ -16,4 +16,6 @@
 
 #include <n2o/add_on.hpp>
 
+#include <n2o/objects/js_function.hpp>
+
 #endif // N2O_INCLUDED
