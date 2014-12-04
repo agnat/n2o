@@ -22,7 +22,7 @@ struct type_list
 {};
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \
-        (3, (0, BOOST_PP_DEC(N2O_LIST_SIZE), <n2o/detail/type_list_impl.hpp>)) 
+        (3, (0, BOOST_PP_DEC(N2O_LIST_SIZE), <n2o/detail/type_list_impl.hpp>))
 
 #  include BOOST_PP_ITERATE()
 

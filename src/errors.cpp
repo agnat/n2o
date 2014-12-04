@@ -19,11 +19,11 @@ handle_exception_impl(boost::function0<void> f) {
         return false;
     } catch (error_already_set const& ex) {
         // javascript error already set.
-    } catch(const std::bad_alloc&) {
-        js_error("memory allocation failed");                
-    } catch(const boost::bad_numeric_cast& x) {
+    } catch (const std::bad_alloc&) {
+        js_error("memory allocation failed");
+    } catch (const boost::bad_numeric_cast& x) {
         js_range_error(x.what());
-    } catch(const std::out_of_range& x) {
+    } catch (const std::out_of_range& x) {
         js_range_error(x.what());
     } catch (...) {
         js_error("unknown c++ exception");

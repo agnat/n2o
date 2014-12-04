@@ -119,7 +119,7 @@ do_return_to_js(char const* x) {
 
 v8::Local<v8::Value>
 do_return_to_js(v8::Handle<v8::Value> x) {
-    if ( ! x.IsEmpty()) {
+    if ( not x.IsEmpty()) {
         return x;
     }
     return v8::Undefined(v8::Isolate::GetCurrent());

@@ -8,7 +8,7 @@
 #include <n2o/converter/registered.hpp>
 
 namespace n2o {
-    
+
 template <typename T> struct arg_from_js;
 
 

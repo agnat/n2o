@@ -9,7 +9,11 @@ endif
 all: $(N2O_TARGET)
 
 test: $(N2O_TARGET) node_modules
-	npm test
+	tap test/*.js
+
+lint:
+	@find . -type f -name "*.[ch]*" -not -path "./boost/*" -not -path "./node_modules/*" -not -name "*.swp" \
+	| vera++ -s --root tools/vera++
 
 clean:
 	rm -rf build
@@ -20,12 +24,6 @@ clean:
 
 distclean: clean
 	rm -rf node_modules samples/{sandbox,hello_world}/node_modules
-
-xcode:
-	node-gyp configure --debug -- -f xcode
-	node-gyp configure --debug -C test -- -f xcode
-	node-gyp configure --debug -C samples/sandbox -- -f xcode
-	open n2o.xcodeproj
 
 .PHONY: all test clean distclean xcode
 

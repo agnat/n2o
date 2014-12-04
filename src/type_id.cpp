@@ -28,7 +28,7 @@ namespace detail {
 bool cxxabi_cxa_demangle_is_broken() {
     static bool was_tested = false;
     static bool is_broken = false;
-    if (!was_tested) {
+    if (not was_tested) {
         int status;
         free_mem keeper(abi::__cxa_demangle("b", 0, 0, &status));
         was_tested = true;

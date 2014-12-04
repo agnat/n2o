@@ -1,4 +1,4 @@
-#if ! defined(BOOST_PP_IS_ITERATING)
+#ifndef BOOST_PP_IS_ITERATING
 # ifndef N2O_INVOKE_INCLUDED
 #  define N2O_INVOKE_INCLUDED
 

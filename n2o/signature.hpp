@@ -1,4 +1,4 @@
-#if ! defined( BOOST_PP_IS_ITERATING )
+#ifndef BOOST_PP_IS_ITERATING
 
 # ifndef N2O_SIGNATURE_INCLUDED
 #  define N2O_SIGNATURE_INCLUDED
@@ -29,10 +29,6 @@ struct most_derived
       , C2
     >::type type;
 };
-
-
-
-
 
 
 #  define BOOST_PP_ITERATION_PARAMS_1 \

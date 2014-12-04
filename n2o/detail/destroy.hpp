@@ -50,6 +50,6 @@ destroy_referent(void* p, T(*)() = 0) {
     destroy_referent_impl(p, (T(*)())0);
 }
 
-}} // end of namespace detail, n2o 
+}} // end of namespace detail, n2o
 
 #endif // N2O_DETAIL_DESTROY_INCLUDED

@@ -7,7 +7,6 @@
   },
   "scripts":
   { "test": "tap test/*.js"
-  , "sources": "scripts/sources.js"
   }
 , "contributors": []
 , "dependencies":

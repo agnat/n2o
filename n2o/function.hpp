@@ -13,12 +13,11 @@ namespace n2o {
 class function /*: public object */ {
 public:
     template <typename F>
-    explicit
-    function(F f) :
+    explicit function(F f) :
         v8_function_(detail::make_function( f
                                           , default_call_policies()
                                           , detail::get_signature(f)))
-    {} 
+    {}
 
     template <typename F>
     function(char const* name, F f) : // C++11: function(f) {
@@ -27,13 +26,12 @@ public:
                                           , detail::get_signature(f)))
     {
         v8_function_->SetName(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name));
-    } 
+    }
 
 
     template <typename F>
     function &
     add_overload(F f) {
-        
         return *this;
     }
 

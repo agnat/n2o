@@ -25,7 +25,7 @@ inline
 type_info
 type_id() {
     return type_info(typeid(T));
-} 
+}
 
 inline
 type_info::type_info(std::type_info const& id) : base_type_(&id) {}

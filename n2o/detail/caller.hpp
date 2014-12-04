@@ -1,9 +1,9 @@
-#if ! defined(BOOST_PP_IS_ITERATING)
+#ifndef BOOST_PP_IS_ITERATING
 # ifndef N2O_CALLER_INCLUDED
 #  define N2O_CALLER_INCLUDED
-   
+
 #  include <n2o/config.h>
-   
+
 #  include <boost/compressed_pair.hpp>
 #  include <boost/type_traits/is_same.hpp>
 #  include <boost/mpl/identity.hpp>
@@ -18,11 +18,11 @@
 #  include <boost/preprocessor/dec.hpp>
 #  include <boost/preprocessor/if.hpp>
 #  include <boost/preprocessor/iteration/local.hpp>
-   
+
 #  include <iostream>
-    
+
 #  include <v8.h>
-    
+
 #  include <n2o/function_wrapper.hpp>
 #  include <n2o/arg_from_js.hpp>
 #  include <n2o/errors.hpp>
@@ -52,7 +52,7 @@ struct caller;
     N2O_NEXT(typename boost::mpl::next<first>::type, arg_iter, n) \
     typedef arg_from_js<typename arg_iter##n::type> c_t##n; \
     c_t##n c##n(args[n]); \
-    if ( ! c##n.convertible()) { \
+    if ( not c##n.convertible()) { \
         js_type_error("conversion failed"); \
         throw_error_already_set(); \
     }
@@ -122,7 +122,7 @@ struct caller_arity<N> {
 #  include BOOST_PP_LOCAL_ITERATE()
 # endif
 
-            if (! data_.second().precall(args /*inner_args*/)) {
+            if (not data_.second().precall(args /*inner_args*/)) {
                 return; // TODO: throw
             }
 
@@ -145,4 +145,3 @@ struct caller_arity<N> {
 
 
 #endif // !defined(BOOST_PP_IS_ITERATING)
-

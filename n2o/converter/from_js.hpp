@@ -14,4 +14,3 @@ rvalue_from_js_stage1(v8::Handle<v8::Value>, registration const&);
 }} // end of namespace converter, n2o
 
 #endif // N2O_CONVERTER_FROM_JS_INCLUDED
-

@@ -7,7 +7,7 @@
 #include <n2o/js_type_info.hpp>
 
 namespace n2o {
-    
+
 namespace converter {
     template <typename T> struct arg_to_js;
     v8::Local<v8::Value> do_return_to_js(char);
@@ -20,7 +20,7 @@ template <typename T> struct to_js_value;
 
 namespace detail {
     struct builtin_to_js { static const bool uses_registry = false; };
-} 
+}
 
 
 #define N2O_RETURN_TO_JS_BY_VALUE(T, expr, jstype)                     \

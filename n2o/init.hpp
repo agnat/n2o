@@ -76,8 +76,8 @@ public:
     typedef typename InitT::n_defaults  n_defaults;
     typedef typename InitT::signature signature;
 
-    init_with_call_policies(CallPoliciesT const& policies) : 
-        base(), policies_(policies) 
+    init_with_call_policies(CallPoliciesT const& policies) :
+        base(), policies_(policies)
     {}
 
     CallPoliciesT const& call_policies() const {
@@ -109,7 +109,7 @@ public:
     void
     call(v8::FunctionCallbackInfo<v8::Value> const& args) {
         std::cout << "init called" << std::endl;
-        if ( ! args.IsConstructCall()) {
+        if ( not args.IsConstructCall()) {
             js_error("constructor called without 'new'");
             //throw_error_already_set();
             return; // XXX better throw...

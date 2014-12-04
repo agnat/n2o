@@ -20,7 +20,7 @@ registry_t &
 entries() {
     static registry_t registry;
     static bool builtin_converters_initialized = false;
-    if ( ! builtin_converters_initialized) {
+    if (not builtin_converters_initialized) {
         builtin_converters_initialized = true;
 
         initialize_builtin_converters();
@@ -40,7 +40,7 @@ entry *
 get(type_info type, bool is_shared_ptr = false) {
     N2O_TRACE(
     registry_t::iterator p = entries().find(entry(type));
-    std::cout << "looking up " << type << ": " 
+    std::cout << "looking up " << type << ": "
               << (p == entries().end() || p->target_type != type ?
                  "... NOT found" : "... found") << std::endl;
     )
@@ -54,7 +54,7 @@ get(type_info type, bool is_shared_ptr = false) {
 namespace registry {
 
 void
-insert(to_js_function_t f, type_info source_t, js_type_info const* (*to_js_target_type)()) { 
+insert(to_js_function_t f, type_info source_t, js_type_info const* (*to_js_target_type)()) {
     std::cout << "inserting to_js " << source_t << "\n";
 
     entry * slot = get(source_t);
@@ -63,7 +63,7 @@ insert(to_js_function_t f, type_info source_t, js_type_info const* (*to_js_targe
     if (slot->to_js_ != 0) {
         std::string msg = std::string("to-JS converter for ") + source_t.name() +
                 " already registered; second conversion method ignored.";
-    
+
         std::cerr << msg << std::endl;
 
         //throw_error_already_set();
