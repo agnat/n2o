@@ -1,3 +1,6 @@
+//==============================================================================
+// Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
+//==============================================================================
 #ifndef N2O_ADD_ON_HPP_INCLUDED_
 #define N2O_ADD_ON_HPP_INCLUDED_
 

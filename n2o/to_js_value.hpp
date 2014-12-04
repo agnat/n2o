@@ -1,3 +1,6 @@
+//==============================================================================
+// Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
+//==============================================================================
 #ifndef N2O_TO_JS_VALUE_INCLUDED
 #define N2O_TO_JS_VALUE_INCLUDED
 

@@ -1,4 +1,7 @@
 #ifndef BOOST_PP_IS_ITERATING
+//==============================================================================
+// Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
+//==============================================================================
 # ifndef N2O_INVOKE_INCLUDED
 #  define N2O_INVOKE_INCLUDED
 

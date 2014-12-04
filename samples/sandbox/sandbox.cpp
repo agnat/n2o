@@ -1,3 +1,6 @@
+//==============================================================================
+// Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
+//==============================================================================
 #include <iostream>
 #include <n2o.hpp>
 
