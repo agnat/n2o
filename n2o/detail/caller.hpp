@@ -49,7 +49,9 @@ template <typename F, typename CallPolicies, typename Sig>
 struct caller;
 
 #  define N2O_NEXT(init, name, n) \
-    typedef BOOST_PP_IF(n, typename boost::mpl::next<BOOST_PP_CAT(name, BOOST_PP_DEC(n)) >::type, init) name##n;
+    typedef BOOST_PP_IF( n \
+                       , typename boost::mpl::next<BOOST_PP_CAT(name, BOOST_PP_DEC(n)) >::type \
+                       , init) name##n;
 
 #  define N2O_ARG_CONVERTER(n) \
     N2O_NEXT(typename boost::mpl::next<first>::type, arg_iter, n) \

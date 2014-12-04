@@ -70,7 +70,12 @@ N2O_TO_INT(long)
 
 N2O_TO_JS_BY_VALUE(char, converter::do_return_to_js(x), 0)
 N2O_TO_JS_BY_VALUE(char const*, converter::do_return_to_js(x), 0)
-N2O_TO_JS_BY_VALUE(std::string, v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), x.data(), v8::String::kNormalString, x.size()), 0)
+N2O_TO_JS_BY_VALUE( std::string
+                  , v8::String::NewFromUtf8( v8::Isolate::GetCurrent()
+                                           , x.data()
+                                           , v8::String::kNormalString
+                                           , x.size())
+                  , 0)
 
 N2O_TO_JS_BY_VALUE(float, v8::Number::New(v8::Isolate::GetCurrent(), x), 0)
 N2O_TO_JS_BY_VALUE(double, v8::Number::New(v8::Isolate::GetCurrent(), x), 0)

@@ -21,7 +21,8 @@ struct property_value {
   }
   template <typename T>
   property_value operator=(constructor<T> const& v) {
-    obj_->Set(v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_), v.function_template()->GetFunction());
+    obj_->Set( v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_)
+             , v.function_template()->GetFunction());
     return *this;
   }
 };
