@@ -14,8 +14,7 @@ private:
 };
 
 N2O_ADD_ON(object exports) {
-    exports["World"] =
-        constructor<world>("World")
+    exports["World"] = constructor<world>("World")
             . function("greet", &world::greet)
             ;
 }
