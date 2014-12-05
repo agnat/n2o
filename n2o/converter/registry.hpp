@@ -2,15 +2,15 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONVERTER_REGISTRY_INCLUDED
-#define N2O_CONVERTER_REGISTRY_INCLUDED
+# define N2O_CONVERTER_REGISTRY_INCLUDED
 
-#include <iostream>
+# include <iostream>
 
-#include <n2o/converter/convertible_function.hpp>
-#include <n2o/converter/constructor_function.hpp>
-#include <n2o/converter/to_js_function_type.hpp>
-#include <n2o/type_id.hpp>
-#include <n2o/js_type_info.hpp>
+# include <n2o/converter/convertible_function.hpp>
+# include <n2o/converter/constructor_function.hpp>
+# include <n2o/converter/to_js_function_type.hpp>
+# include <n2o/type_id.hpp>
+# include <n2o/js_type_info.hpp>
 
 namespace n2o { namespace converter {
 
@@ -42,7 +42,6 @@ void push_back(
         );
 
 } // end of namespace registry
-
 
 }} // end of namespace n2o::converter
 

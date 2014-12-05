@@ -2,10 +2,10 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DETAIL_EXCEPTION_HANDLER_INCLUDED
-#define N2O_DETAIL_EXCEPTION_HANDLER_INCLUDED
+# define N2O_DETAIL_EXCEPTION_HANDLER_INCLUDED
 
-#include <boost/function/function0.hpp>
-#include <boost/function/function2.hpp>
+# include <boost/function/function0.hpp>
+# include <boost/function/function2.hpp>
 
 namespace n2o { namespace detail {
 

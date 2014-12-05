@@ -2,14 +2,14 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DETAIL_TRANSLATE_EXCEPTION_INCLUDED
-#define N2O_DETAIL_TRANSLATE_EXCEPTION_INCLUDED
+# define N2O_DETAIL_TRANSLATE_EXCEPTION_INCLUDED
 
-#include <boost/call_traits.hpp>
-#include <boost/type_traits/add_const.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/function/function0.hpp>
+# include <boost/call_traits.hpp>
+# include <boost/type_traits/add_const.hpp>
+# include <boost/type_traits/add_reference.hpp>
+# include <boost/function/function0.hpp>
 
-#include <n2o/detail/exception_handler.hpp>
+# include <n2o/detail/exception_handler.hpp>
 
 namespace n2o { namespace detail {
 

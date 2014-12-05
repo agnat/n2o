@@ -12,8 +12,7 @@
 # define N2O_APPLY_N2O_ITEM(v) v
 # define N2O_APPLY_N2O_NIL
 
-
-#  define N2O_CV_COUNT 4
+# define N2O_CV_COUNT 4
 
 # define N2O_CV_QUALIFIER(i)                          \
     N2O_APPLY(                                        \

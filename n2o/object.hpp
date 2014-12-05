@@ -2,9 +2,9 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_OBJECT_INCLUDED
-#define N2O_OBJECT_INCLUDED
+# define N2O_OBJECT_INCLUDED
 
-#include <n2o/detail/property_value.hpp>
+# include <n2o/detail/property_value.hpp>
 
 namespace n2o {
 

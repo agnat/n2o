@@ -2,13 +2,13 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_EXCEPTION_TRANSLATOR_INCLUDED
-#define N2O_EXCEPTION_TRANSLATOR_INCLUDED
+# define N2O_EXCEPTION_TRANSLATOR_INCLUDED
 
-#include <boost/bind.hpp>
-#include <boost/type.hpp>
+# include <boost/bind.hpp>
+# include <boost/type.hpp>
 
-#include <n2o/detail/translate_exception.hpp>
-#include <n2o/detail/exception_handler.hpp>
+# include <n2o/detail/translate_exception.hpp>
+# include <n2o/detail/exception_handler.hpp>
 
 namespace n2o {
 
@@ -23,4 +23,5 @@ register_exception_translator(Translate translate, boost::type<ExceptionType>* =
 }
 
 } // end of namespace n2o
+
 #endif // N2O_EXCEPTION_TRANSLATOR_INCLUDED

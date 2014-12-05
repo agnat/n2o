@@ -2,9 +2,9 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DETAIL_DESTROY_INCLUDED
-#define N2O_DETAIL_DESTROY_INCLUDED
+# define N2O_DETAIL_DESTROY_INCLUDED
 
-#include <boost/type_traits/is_array.hpp>
+# include <boost/type_traits/is_array.hpp>
 
 namespace n2o { namespace detail {
 
@@ -53,6 +53,6 @@ destroy_referent(void* p, T(*)() = 0) {
     destroy_referent_impl(p, (T(*)())0);
 }
 
-}} // end of namespace detail, n2o
+}} // end of namespace n2o::detail
 
 #endif // N2O_DETAIL_DESTROY_INCLUDED

@@ -2,12 +2,12 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONVERTER_REGISTERED_INCLUDED
-#define N2O_CONVERTER_REGISTERED_INCLUDED
+# define N2O_CONVERTER_REGISTERED_INCLUDED
 
-#include <boost/shared_ptr.hpp>
-#include <boost/type.hpp>
+# include <boost/shared_ptr.hpp>
+# include <boost/type.hpp>
 
-#include <n2o/converter/registry.hpp>
+# include <n2o/converter/registry.hpp>
 
 
 namespace n2o { namespace converter {

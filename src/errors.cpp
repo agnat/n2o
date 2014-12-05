@@ -3,10 +3,10 @@
 //==============================================================================
 #include <n2o/errors.hpp>
 
-#include <boost/cast.hpp>
-#include <v8.h>
+# include <boost/cast.hpp>
+# include <v8.h>
 
-#include <n2o/detail/exception_handler.hpp>
+# include <n2o/detail/exception_handler.hpp>
 
 namespace n2o {
 

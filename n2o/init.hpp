@@ -2,21 +2,20 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_INIT_INCLUDED
-#define N2O_INIT_INCLUDED
+# define N2O_INIT_INCLUDED
 
-#include "config.h"
+# include "config.h"
 
-#include <iostream>
+# include <iostream>
 
-#include <boost/preprocessor/enum_params_with_a_default.hpp>
-#include <boost/preprocessor/enum_params.hpp>
-
-#include <boost/mpl/void.hpp>
-#include <boost/mpl/joint_view.hpp>
-#include <boost/mpl/empty.hpp>
-#include <boost/mpl/back.hpp>
-#include <boost/mpl/size.hpp>
-#include <boost/mpl/iterator_range.hpp>
+# include <boost/preprocessor/enum_params_with_a_default.hpp>
+# include <boost/preprocessor/enum_params.hpp>
+# include <boost/mpl/void.hpp>
+# include <boost/mpl/joint_view.hpp>
+# include <boost/mpl/empty.hpp>
+# include <boost/mpl/back.hpp>
+# include <boost/mpl/size.hpp>
+# include <boost/mpl/iterator_range.hpp>
 
 #include <n2o/detail/type_list.hpp>
 

@@ -2,9 +2,9 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DETAIL_REFERENT_STORAGE_INCLUDED
-#define N2O_DETAIL_REFERENT_STORAGE_INCLUDED
+# define N2O_DETAIL_REFERENT_STORAGE_INCLUDED
 
-#include <boost/mpl/if.hpp>
+# include <boost/mpl/if.hpp>
 
 namespace n2o { namespace detail {
 
@@ -33,7 +33,7 @@ union aligned_storage {
     char bytes[size];
 };
 
-#undef N2O_ALIGNER
+# undef N2O_ALIGNER
 
 template <class T> struct referent_size;
 

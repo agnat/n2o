@@ -2,9 +2,9 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONVERTER_TO_JS_FUNCTION_TYPE_INCLUDED
-#define N2O_CONVERTER_TO_JS_FUNCTION_TYPE_INCLUDED
+# define N2O_CONVERTER_TO_JS_FUNCTION_TYPE_INCLUDED
 
-#include <v8.h>
+# include <v8.h>
 
 namespace n2o { namespace converter {
 

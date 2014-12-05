@@ -2,11 +2,11 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_VALUE_ARG_INCLUDED
-#define N2O_VALUE_ARG_INCLUDED
+# define N2O_VALUE_ARG_INCLUDED
 
-#include <boost/mpl/if.hpp>
-#include <boost/type_traits/add_reference.hpp>
-#include <boost/type_traits/add_const.hpp>
+# include <boost/mpl/if.hpp>
+# include <boost/type_traits/add_reference.hpp>
+# include <boost/type_traits/add_const.hpp>
 
 namespace n2o { namespace detail {
 

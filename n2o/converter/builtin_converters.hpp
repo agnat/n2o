@@ -2,12 +2,12 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONVERTER_BUILTIN_CONVERTER_INCLUDED
-#define N2O_CONVERTER_BUILTIN_CONVERTER_INCLUDED
+# define N2O_CONVERTER_BUILTIN_CONVERTER_INCLUDED
 
-#include <string>
-#include <v8.h>
+# include <string>
+# include <v8.h>
 
-#include <n2o/js_type_info.hpp>
+# include <n2o/js_type_info.hpp>
 
 namespace n2o {
 
@@ -26,7 +26,7 @@ namespace detail {
 }
 
 
-#define N2O_RETURN_TO_JS_BY_VALUE(T, expr, jstype)                     \
+# define N2O_RETURN_TO_JS_BY_VALUE(T, expr, jstype)                    \
     template <> struct to_js_value<T&> : detail::builtin_to_js {       \
         inline v8::Local<v8::Value> operator()(T const& x) const {     \
             return (expr);                                             \
@@ -44,19 +44,19 @@ namespace detail {
         }                                                              \
     };
 
-#define N2O_ARG_TO_JS_BY_VALUE(T, expr)               \
+# define N2O_ARG_TO_JS_BY_VALUE(T, expr)              \
     namespace converter {                             \
-        template <> struct arg_to_js<T>{  \
-            arg_to_js(T const& x) {} \
+        template <> struct arg_to_js<T>{              \
+            arg_to_js(T const& x) {}                  \
         };                                            \
     }
 
-#define N2O_TO_JS_BY_VALUE(T, expr, jstype)    \
-    N2O_RETURN_TO_JS_BY_VALUE(T, expr, jstype) \
+# define N2O_TO_JS_BY_VALUE(T, expr, jstype)    \
+    N2O_RETURN_TO_JS_BY_VALUE(T, expr, jstype)  \
     N2O_ARG_TO_JS_BY_VALUE(T, expr)
 
-#define N2O_TO_INT(T)                                                               \
-    N2O_TO_JS_BY_VALUE(signed T, v8::Integer::New(v8::Isolate::GetCurrent(), x), 0) \
+# define N2O_TO_INT(T)                                                               \
+    N2O_TO_JS_BY_VALUE(signed T, v8::Integer::New(v8::Isolate::GetCurrent(), x), 0)  \
     N2O_TO_JS_BY_VALUE(unsigned T, v8::Integer::NewFromUnsigned(v8::Isolate::GetCurrent(), x), 0)
 
 N2O_TO_JS_BY_VALUE(bool, v8::Boolean::New(v8::Isolate::GetCurrent(), x), 0)
@@ -80,10 +80,10 @@ N2O_TO_JS_BY_VALUE( std::string
 N2O_TO_JS_BY_VALUE(float, v8::Number::New(v8::Isolate::GetCurrent(), x), 0)
 N2O_TO_JS_BY_VALUE(double, v8::Number::New(v8::Isolate::GetCurrent(), x), 0)
 
-#undef N2O_RETURN_TO_JS_BY_VALUE
-#undef N2O_ARG_TO_JS_BY_VALUE
-#undef N2O_TO_JS_BY_VALUE
-#undef N2O_TO_INT
+# undef N2O_RETURN_TO_JS_BY_VALUE
+# undef N2O_ARG_TO_JS_BY_VALUE
+# undef N2O_TO_JS_BY_VALUE
+# undef N2O_TO_INT
 
 namespace converter {
     void initialize_builtin_converters();

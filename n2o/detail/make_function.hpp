@@ -2,7 +2,7 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DETAIL_MAKE_FUNCTION_INCLUDED
-#define N2O_DETAIL_MAKE_FUNCTION_INCLUDED
+# define N2O_DETAIL_MAKE_FUNCTION_INCLUDED
 
 namespace n2o { namespace detail {
 

@@ -2,13 +2,13 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONVERTER_REGISTRATIONS_INCLUDED
-#define N2O_CONVERTER_REGISTRATIONS_INCLUDED
+# define N2O_CONVERTER_REGISTRATIONS_INCLUDED
 
-#include <n2o/converter/convertible_function.hpp>
-#include <n2o/converter/constructor_function.hpp>
-#include <n2o/js_type_info.hpp>
-#include <n2o/type_id.hpp>
-#include <n2o/converter/to_js_function_type.hpp>
+# include <n2o/converter/convertible_function.hpp>
+# include <n2o/converter/constructor_function.hpp>
+# include <n2o/js_type_info.hpp>
+# include <n2o/type_id.hpp>
+# include <n2o/converter/to_js_function_type.hpp>
 
 namespace n2o { namespace converter {
 

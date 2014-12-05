@@ -2,10 +2,10 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_CONSTRUCTOR_INCLUDED
-#define N2O_CONSTRUCTOR_INCLUDED
+# define N2O_CONSTRUCTOR_INCLUDED
 
-#include <n2o/init.hpp>
-#include <n2o/detail/make_function.hpp>
+# include <n2o/init.hpp>
+# include <n2o/detail/make_function.hpp>
 
 namespace n2o {
 

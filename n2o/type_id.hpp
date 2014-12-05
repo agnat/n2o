@@ -2,9 +2,10 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_TYPE_ID_INCLUDED
-#define N2O_TYPE_ID_INCLUDED
+# define N2O_TYPE_ID_INCLUDED
 
-#include <boost/operators.hpp>
+# include <typeinfo>
+# include <boost/operators.hpp>
 
 namespace n2o {
 

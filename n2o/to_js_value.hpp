@@ -2,10 +2,10 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_TO_JS_VALUE_INCLUDED
-#define N2O_TO_JS_VALUE_INCLUDED
+# define N2O_TO_JS_VALUE_INCLUDED
 
-#include <n2o/value_arg.hpp>
-#include <n2o/converter/builtin_converters.hpp>
+# include <n2o/value_arg.hpp>
+# include <n2o/converter/builtin_converters.hpp>
 
 namespace n2o {
 

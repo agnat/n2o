@@ -3,11 +3,11 @@
 //==============================================================================
 #include <n2o/converter/builtin_converters.hpp>
 
-#include <boost/cast.hpp>
+# include <boost/cast.hpp>
 
-#include <n2o/converter/rvalue_from_js_data.hpp>
-#include <n2o/converter/registry.hpp>
-#include <n2o/type_id.hpp>
+# include <n2o/converter/rvalue_from_js_data.hpp>
+# include <n2o/converter/registry.hpp>
+# include <n2o/type_id.hpp>
 
 
 namespace n2o { namespace converter {
@@ -128,14 +128,14 @@ do_return_to_js(v8::Handle<v8::Value> x) {
     return v8::Undefined(v8::Isolate::GetCurrent());
 }
 
-#define REGISTER_INT_CONVERTERS_S(signedness, U)               \
+# define REGISTER_INT_CONVERTERS_S(signedness, U)              \
     slot_rvalue_from_js<                                       \
               signedness U                                     \
             , signedness ## _int_rvalue_from_js<signedness U>  \
     >()
 
-#define REGISTER_INT_CONVERTERS(U)        \
-    REGISTER_INT_CONVERTERS_S(signed, U); \
+# define REGISTER_INT_CONVERTERS(U)        \
+    REGISTER_INT_CONVERTERS_S(signed, U);  \
     REGISTER_INT_CONVERTERS_S(unsigned, U)
 
 void

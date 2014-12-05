@@ -12,6 +12,7 @@
 namespace n2o {
 
 namespace {
+
   struct compare_first_cstring {
       template <class T>
       bool
@@ -24,7 +25,7 @@ namespace {
       ~free_mem() { std::free(p); }
       char* p;
   };
-}
+} // end of anonymous namespace
 
 namespace detail {
 

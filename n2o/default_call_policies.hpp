@@ -2,16 +2,16 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_DEFAULT_CALL_POLICIES_INCLUDED
-#define N2O_DEFAULT_CALL_POLICIES_INCLUDED
+# define N2O_DEFAULT_CALL_POLICIES_INCLUDED
 
-#include <iostream>
+# include <iostream>
 
-#include <boost/mpl/if.hpp>
-#include <boost/mpl/or.hpp>
-#include <boost/type_traits/is_pointer.hpp>
-#include <boost/type_traits/is_reference.hpp>
+# include <boost/mpl/if.hpp>
+# include <boost/mpl/or.hpp>
+# include <boost/type_traits/is_pointer.hpp>
+# include <boost/type_traits/is_reference.hpp>
 
-#include <n2o/to_js_value.hpp>
+# include <n2o/to_js_value.hpp>
 
 namespace n2o {
 

@@ -2,9 +2,9 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_ARG_FROM_JS_INCLUDED
-#define N2O_ARG_FROM_JS_INCLUDED
+# define N2O_ARG_FROM_JS_INCLUDED
 
-#include <n2o/converter/arg_from_js.hpp>
+# include <n2o/converter/arg_from_js.hpp>
 
 namespace n2o {
 
@@ -30,4 +30,5 @@ inline
 arg_from_js<T>::arg_from_js(v8::Handle<v8::Value> source) : base(source) {}
 
 } // end of namespace n2o
+
 #endif // N2O_ARG_FROM_JS_INCLUDED

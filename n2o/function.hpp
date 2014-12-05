@@ -2,14 +2,14 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_FUNCTION_INCLUDED
-#define N2O_FUNCTION_INCLUDED
+# define N2O_FUNCTION_INCLUDED
 
-#include <n2o/config.h>
+# include <n2o/config.h>
 
-#include <n2o/default_call_policies.hpp>
-#include <n2o/detail/caller.hpp>
-#include <n2o/detail/make_function.hpp>
-#include <n2o/objects/object_base.hpp>
+# include <n2o/default_call_policies.hpp>
+# include <n2o/detail/caller.hpp>
+# include <n2o/detail/make_function.hpp>
+# include <n2o/objects/object_base.hpp>
 
 namespace n2o {
 
