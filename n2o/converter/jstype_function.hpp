@@ -5,6 +5,8 @@
 # define N2O_CONVERTER_JSTYPE_FUNCTION_INCLUDED
 
 # include <n2o/js_type_info.hpp>
+# include <n2o/converter/registrations.hpp>
+# include <n2o/converter/registry.hpp>
 # include <n2o/detail/unwind_type.hpp>
 
 namespace n2o { namespace converter {

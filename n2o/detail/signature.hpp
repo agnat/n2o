@@ -7,6 +7,7 @@
 
 #  include <boost/preprocessor/iterate.hpp>
 #  include <boost/preprocessor/iteration/local.hpp>
+#  include <boost/mpl/at.hpp>
 
 #  include <n2o/type_id.hpp>
 #  include <n2o/detail/indirect_traits.hpp>

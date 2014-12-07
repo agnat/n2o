@@ -5,6 +5,7 @@
 # define N2O_DETAIL_UNWIND_TYPE_INCLUDED
 
 # include <boost/type_traits/object_traits.hpp>
+# include <boost/type.hpp>
 
 # include <n2o/detail/cv_category.hpp>
 # include <n2o/detail/indirect_traits.hpp>

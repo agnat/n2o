@@ -4,9 +4,27 @@
 #include <iostream>
 #include <n2o.hpp>
 
+#include <n2o/tap.hpp>
+
 namespace {
 
 using namespace n2o;
+
+//=== Function Internals =======================================================
+
+void void_void(void);
+void test_function(v8::FunctionCallbackInfo<v8::Value> const& args) {
+    v8::HandleScope scope(args.GetIsolate());
+    n2o::tap t(args[0]);
+
+    t.plan(0);
+
+    t.end();
+}
+
+void cpp_tests(object exports) {
+    exports["test_function"] = v8::Function::New(v8::Isolate::GetCurrent(), test_function);
+}
 
 //=== Basic Functions ==========================================================
 
@@ -73,6 +91,7 @@ void function_names(object exports) {
 //=== Init =====================================================================
 
 N2O_ADD_ON(object exports) {
+    cpp_tests(exports);
     basic_functions(exports);
     rvalue_arguments(exports);
     function_names(exports);

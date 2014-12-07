@@ -4,10 +4,10 @@
 #ifndef N2O_OBJECT_OBJECT_BASE_INCLUDED
 # define N2O_OBJECT_OBJECT_BASE_INCLUDED
 
-namespace n2o { namespace objects {
+namespace n2o {
 
-class object_base {};
+class object_core {};
 
-}} // end of namespace n2o::object
+} // end of namespace n2o
 
 #endif // N2O_OBJECT_OBJECT_BASE_INCLUDED

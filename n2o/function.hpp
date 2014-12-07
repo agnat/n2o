@@ -9,11 +9,11 @@
 # include <n2o/default_call_policies.hpp>
 # include <n2o/detail/caller.hpp>
 # include <n2o/detail/make_function.hpp>
-# include <n2o/objects/object_base.hpp>
+# include <n2o/object_core.hpp>
 
 namespace n2o {
 
-class function /*: public object */ {
+class function : public object_core {
 public:
     template <typename F>
     explicit function(F f) :

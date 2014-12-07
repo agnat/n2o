@@ -42,17 +42,18 @@
       'n2o/js_type_info.hpp',
       'n2o/object.hpp',
       'n2o/objects/js_function.hpp',
-      'n2o/objects/object_base.hpp',
+      'n2o/object_core.hpp',
       'n2o/signature.hpp',
       'n2o/to_js_value.hpp',
       'n2o/type_id.hpp',
       'n2o/value_arg.hpp',
       'src/binding.cpp',
-      'src/builtin_converters.cpp',
+      'src/converter/builtin_converters.cpp',
+      'src/converter/from_js.cpp',
+      'src/converter/registry.cpp',
       'src/errors.cpp',
-      'src/from_js.cpp',
       'src/function_wrapper.cpp',
-      'src/registry.cpp',
+      'src/objects/function.cpp',
       'src/type_id.cpp' ]
   , 'includes': ['n2o.gypi']
   , 'all_dependent_settings': { 'includes': ['n2o.gypi'] }

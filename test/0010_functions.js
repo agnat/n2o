@@ -1,10 +1,17 @@
 #!/usr/bin/env node
-
 require('..')
 const test    = require('tap').test
   , root      = require('path').resolve(__dirname, '.')
-  , functions = require('bindings')({ module_root: root, bindings: 'functions' });
+  , path      = require('path')
+  , functions = process.env.__XCODE_BUILT_PRODUCTS_DIR_PATHS
+              ? require(path.join(process.env.__XCODE_BUILT_PRODUCTS_DIR_PATHS, 'functions'))
+              : require('bindings')({ module_root: root, bindings: 'functions' });
 
+for (var symbol in functions) {
+  if (typeof functions[symbol] == 'function' && symbol.match(/^test_/)) {
+    test('c++ ' + symbol, functions[symbol]);
+  }
+}
 test('basic functions', function(t) {
   t.plan(11);
 
