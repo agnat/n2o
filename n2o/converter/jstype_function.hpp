@@ -52,7 +52,7 @@ template <typename T>
 struct expected_jstype_for_arg {
     static js_type_info const* get_jstype() {
         const converter::registration * r = registry::query(
-            detail::unwind_type_id( (boost::type<T>*)0
+            detail::unwind_type_id_( (boost::type<T>*)0
                                   , (boost::mpl::bool_<boost::is_void<T>::value>*)0));
         return r ? r->expected_from_js_type() : 0;
     }

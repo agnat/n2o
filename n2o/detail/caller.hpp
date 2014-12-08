@@ -28,7 +28,8 @@
 
 #  include <n2o/function_wrapper.hpp>
 #  include <n2o/arg_from_js.hpp>
-#  include <n2o/errors.hpp>
+//#  include <n2o/errors.hpp>
+#  include <n2o/detail/signature.hpp>
 
 namespace n2o { namespace detail {
 
@@ -48,18 +49,17 @@ template <unsigned> struct caller_arity;
 template <typename F, typename CallPolicies, typename Sig>
 struct caller;
 
-#  define N2O_NEXT(init, name, n) \
-    typedef BOOST_PP_IF( n \
+#  define N2O_NEXT(init, name, n)                                                              \
+    typedef BOOST_PP_IF( n                                                                     \
                        , typename boost::mpl::next<BOOST_PP_CAT(name, BOOST_PP_DEC(n)) >::type \
                        , init) name##n;
 
-#  define N2O_ARG_CONVERTER(n) \
+#  define N2O_ARG_CONVERTER(n)                                    \
     N2O_NEXT(typename boost::mpl::next<first>::type, arg_iter, n) \
-    typedef arg_from_js<typename arg_iter##n::type> c_t##n; \
-    c_t##n c##n(args[n]); \
-    if ( not c##n.convertible()) { \
-        js_type_error("conversion failed"); \
-        throw_error_already_set(); \
+    typedef arg_from_js<typename arg_iter##n::type> c_t##n;       \
+    c_t##n c##n(args[n]);                                         \
+    if ( not c##n.convertible()) {                                \
+        return v8::Handle<v8::Value>();                           \
     }
 
 
@@ -79,6 +79,9 @@ struct caller_base_select {
 template <typename F, typename CallPolicies, typename Sig>
 struct caller : caller_base_select<F, CallPolicies, Sig>::type {
 public:
+    caller(F f, CallPolicies p) : base(f, p) {}
+
+    /*
     static
     v8::Handle<v8::Value>
     create(F f, CallPolicies p) {
@@ -91,12 +94,12 @@ public:
         caller * f = reinterpret_cast<caller*>(args.Data().As<v8::External>()->Value());
         handle_exception(boost::bind<void>(*f, args));
     }
+    */
 
 private:
     typedef typename caller_base_select<F, CallPolicies, Sig>::type base;
 
     caller();
-    caller(F f, CallPolicies p) : base(f, p) {}
 };
 
 }} // end of namespace detail, n2o
@@ -113,7 +116,7 @@ struct caller_arity<N> {
     struct impl {
         impl(F f, Policies p) : data_(f,p) {}
 
-        void
+        v8::Handle<v8::Value>
         operator()(v8::FunctionCallbackInfo<v8::Value> const& args) {
             v8::HandleScope scope(v8::Isolate::GetCurrent());
             typedef typename boost::mpl::begin<Sig>::type first;
@@ -128,7 +131,7 @@ struct caller_arity<N> {
 # endif
 
             if (not data_.second().precall(args /*inner_args*/)) {
-                return; // TODO: throw
+                return v8::Handle<v8::Value>(); // empty handle indicates mismatch
             }
 
             v8::Handle<v8::Value> result = detail::invoke(
@@ -138,9 +141,25 @@ struct caller_arity<N> {
                     BOOST_PP_ENUM_TRAILING_PARAMS(N, c));
 
             data_.second().postcall(args /*inner_args*/, result);
+            return result;
         }
 
         static unsigned min_arity() { return N; }
+
+        static
+        js_function_signature_info signature() {
+            const signature_element * sig = detail::signature<Sig>::elements();
+            typedef typename Policies::template extract_return_type<Sig>::type rtype;
+            typedef typename select_result_converter<Policies, rtype>::type result_converter;
+
+            static const signature_element ret = {
+                  (boost::is_void<rtype>::value ? "void" : type_id<rtype>().name())
+                , 0 // XXX & result_converter::get_jstype
+                , boost::detail::indirect_traits::is_reference_to_non_const<rtype>::value
+            };
+            js_function_signature_info res = {sig, &ret};
+            return res;
+        }
 
     private:
         boost::compressed_pair<F,Policies> data_;

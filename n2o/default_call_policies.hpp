@@ -8,6 +8,7 @@
 
 # include <boost/mpl/if.hpp>
 # include <boost/mpl/or.hpp>
+# include <boost/mpl/front.hpp>
 # include <boost/type_traits/is_pointer.hpp>
 # include <boost/type_traits/is_reference.hpp>
 
@@ -44,6 +45,9 @@ struct default_call_policies {
         args.GetReturnValue().Set(result);
     }
     typedef default_result_converter result_converter;
+
+    template <typename Sig>
+    struct extract_return_type : boost::mpl::front<Sig> {};
 };
 
 template <>

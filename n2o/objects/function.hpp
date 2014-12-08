@@ -21,6 +21,11 @@ public:
 
     v8::Handle<v8::Value> name() const;
 
+    static inline
+    v8::Handle<v8::Value>
+    create(js_function const& f) {
+        return v8::External::New(v8::Isolate::GetCurrent(), new function(f));        
+    }
 private:
     v8::Handle<v8::Value> signature(bool show_return_type = false) const;
     v8::Handle<v8::Value> signatures(bool show_return_type = false) const;

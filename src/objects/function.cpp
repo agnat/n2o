@@ -15,14 +15,17 @@ js_function_impl_base::~js_function_impl_base() {}
 unsigned
 js_function_impl_base::max_arity() const { return this->min_arity(); }
 
-function::function(js_function const& f) : f_(f) {}
+function::function(js_function const& f) :
+    f_(f)
+{}
+
 function::~function() {}
 
 v8::Handle<v8::Value>
 function::operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const {
     v8::TryCatch try_catch;
     unsigned arg_count = args.Length();
-    function const* func = unwrap(args.Data());
+    function const* func = this;
     do {
         unsigned min_arity = func->f_.min_arity();
         unsigned max_arity = func->f_.max_arity();
@@ -44,10 +47,29 @@ function::operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const {
     return v8::Handle<v8::Value>();
 }
 
+struct bind_helper {
+    bind_helper(function * f, v8::FunctionCallbackInfo<v8::Value> const& args) :
+        f_(f), args_(args)
+    {}
+
+    void operator()() {
+        (*f_)(args_);
+    }
+private:
+    function * f_;
+    v8::FunctionCallbackInfo<v8::Value> const& args_;
+};
+
 void
 function::call(v8::FunctionCallbackInfo<v8::Value> const& args) {
     function * f = unwrap(args.Data());
-    handle_exception(boost::bind<void>(*f, args));
+    handle_exception(bind_helper(f, args));
+}
+
+void
+function::argument_error(v8::FunctionCallbackInfo<v8::Value> const& args) const {
+    js_error("argument error");
+    throw_error_already_set();
 }
 
 }} // end of namespace n2o::objects

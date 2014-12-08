@@ -15,6 +15,16 @@ namespace n2o { namespace detail {
 template <typename Generator, typename U>
 inline
 typename Generator::result_type
+unwind_type(U const& p, Generator* =0);
+
+template <typename Generator, typename U>
+inline
+typename Generator::result_type
+unwind_type(boost::type<U> * p = 0, Generator* = 0);
+
+template <typename Generator, typename U>
+inline
+typename Generator::result_type
 unwind_type_cv(U * p, cv_unqualified, Generator* = 0) {
     return Generator::execute(p);
 }
@@ -122,7 +132,7 @@ struct unwind_helper2<reference_to_pointer_> {
 template <typename Generator, typename U>
 inline
 typename Generator::result_type
-unwind_type(boost::type<U>*p, Generator*) {
+unwind_type(boost::type<U>*, Generator*) {
     static const int indirection
         = (boost::is_pointer<U>::value ? pointer_ : 0)
                 + (indirect_traits::is_reference_to_pointer<U>::value

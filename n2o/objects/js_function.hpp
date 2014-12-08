@@ -101,7 +101,9 @@ struct js_function {
         : impl_(new full_js_function_impl<Caller, Sig>(caller, min_arity, max_arity))
     {}
 
-    js_function(js_function const& rhs) : impl_(rhs.impl_) {}
+    js_function(js_function const& rhs) :
+        impl_(rhs.impl_)
+    {}
 
     v8::Handle<v8::Value> operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const {
         return (*impl_)(args);

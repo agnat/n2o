@@ -18,6 +18,7 @@
 # include <boost/mpl/iterator_range.hpp>
 
 #include <n2o/detail/type_list.hpp>
+#include <n2o/errors.hpp>
 
 #define N2O_OVERLOAD_TYPES_WITH_DEFAULT  \
     BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT( \
