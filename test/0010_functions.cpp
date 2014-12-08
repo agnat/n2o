@@ -50,7 +50,7 @@ int signed_char_short_int_long(
         , signed int   c
         , signed long  d)
 {
-    return a + b + c + d;
+    return a + b + c + static_cast<int>(d);
 }
 int unsigned_char_short_int_long(
           unsigned char  a
@@ -58,7 +58,7 @@ int unsigned_char_short_int_long(
         , unsigned int   c
         , unsigned long  d)
 {
-    return a + b + c + d;
+    return a + b + c + static_cast<int>(d);
 }
 
 double double_float_double(float a, double b) { return a + b; }
