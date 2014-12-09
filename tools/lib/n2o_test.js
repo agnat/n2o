@@ -29,7 +29,6 @@ exports.headers = function headers(callback) {
   var root = path.resolve(__dirname, '../..');
   glob(path.join(root, 'n2o/**/*.h?(pp)'), function(error, files) {
     files = files.map(function(f){ return path.relative(root, f) });
-    console.log(files);
     files.unshift('n2o.hpp');
     callback(error, files);
   });

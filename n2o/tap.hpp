@@ -86,4 +86,5 @@ private:
 };
 
 } // end of namespace n2o
+
 #endif // N2O_TAP_INCLUDED
