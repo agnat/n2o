@@ -23,10 +23,10 @@ function::~function() {}
 
 v8::Handle<v8::Value>
 function::operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const {
-    v8::TryCatch try_catch;
     unsigned arg_count = args.Length();
     function const* func = this;
     do {
+        v8::TryCatch try_catch;
         unsigned min_arity = func->f_.min_arity();
         unsigned max_arity = func->f_.max_arity();
         if (arg_count >= min_arity && arg_count <= max_arity) {
@@ -47,29 +47,51 @@ function::operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const {
     return v8::Handle<v8::Value>();
 }
 
-struct bind_helper {
-    bind_helper(function * f, v8::FunctionCallbackInfo<v8::Value> const& args) :
+namespace {
+
+struct bind {
+    bind(function * f, v8::FunctionCallbackInfo<v8::Value> const& args) :
         f_(f), args_(args)
     {}
 
-    void operator()() {
-        (*f_)(args_);
-    }
+    void operator()() { (*f_)(args_); }
 private:
     function * f_;
     v8::FunctionCallbackInfo<v8::Value> const& args_;
 };
 
+} // end of anonymous namespace
+
 void
 function::call(v8::FunctionCallbackInfo<v8::Value> const& args) {
     function * f = unwrap(args.Data());
-    handle_exception(bind_helper(f, args));
+    handle_exception(bind(f, args));
 }
 
 void
 function::argument_error(v8::FunctionCallbackInfo<v8::Value> const& args) const {
-    js_error("argument error");
+    std::string message("javascript argument types ");
+    v8::String::Utf8Value s(this->name().As<v8::String>());
+    message += std::string(*s) + "(";
+    int argc = args.Length();
+    for (int i = 0; i < argc; ++i) {
+        message += js_typeof(args[i]).name();
+        if (i < argc - 1) { message += ", "; }
+    }
+    message += ") did not match c++ signature:\n";
+    
+    js_type_error(message.c_str());
     throw_error_already_set();
+}
+
+v8::Handle<v8::Value>
+function::name() const {
+    v8::Local<v8::Function> f = v8::Local<v8::Function>::New(v8::Isolate::GetCurrent(), self_);
+    v8::Local<v8::String> name = f->GetName().As<v8::String>();
+    if (name->Length() != 0) {
+        return name;
+    }
+    return f->GetInferredName();
 }
 
 }} // end of namespace n2o::objects

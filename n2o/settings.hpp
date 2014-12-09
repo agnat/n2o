@@ -5,7 +5,7 @@
 # define N2O_SETTINGS_INCLUDED
 
 # ifndef N2O_MAX_ARITY
-#  define N2O_MAX_ARITY 10
+#  define N2O_MAX_ARITY 5
 # endif
 
 #endif // N2O_SETTINGS_INCLUDED

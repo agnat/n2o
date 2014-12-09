@@ -41,3 +41,11 @@ test('exception in module init', function(t) {
   });
   t.end();
 });
+
+test('argument errors', function (t) {
+  t.plan(1);
+
+  t.throws(function(){exceptions.double_func("string")});
+  
+  t.end();
+});

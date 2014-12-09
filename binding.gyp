@@ -54,7 +54,8 @@
       'src/errors.cpp',
       'src/function_wrapper.cpp',
       'src/objects/function.cpp',
-      'src/type_id.cpp' ]
+      'src/type_id.cpp',
+      'src/js_type_info.cpp' ]
   , 'includes': ['n2o.gypi']
   , 'all_dependent_settings': { 'includes': ['n2o.gypi'] }
   }

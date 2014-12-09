@@ -30,6 +30,7 @@ make_function(F f, CallPolicies const& p, Sig signature) {
     objects::js_function js_func(c, Sig());
     v8::Local<v8::Value> func = objects::function::create(js_func);
     v8::Local<v8::Function> function = v8::Function::New(isolate, objects::function::call, func);
+    objects::function::set_self(func, function);
     v8::Local<v8::Object> prototype = pt->GetFunction()->NewInstance();
     prototype->SetInternalField(0, func);
     v8::Local<v8::Value> original_proto = function->GetPrototype();

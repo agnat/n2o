@@ -4,6 +4,7 @@
   , {'target_name': 'classes',     'sources': ['0020_classes.cpp']}
   , {'target_name': 'exceptions',  'sources': ['0030_exceptions.cpp']}
   , {'target_name': 'init_except', 'sources': ['0030_init_except.cpp']}
+  , {'target_name': 'js_type_info', 'sources': ['0040_js_type_info.cpp']}
   ]
 }
 
