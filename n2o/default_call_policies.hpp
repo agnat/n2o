@@ -4,6 +4,8 @@
 #ifndef N2O_DEFAULT_CALL_POLICIES_INCLUDED
 # define N2O_DEFAULT_CALL_POLICIES_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <iostream>
 
 # include <boost/mpl/if.hpp>

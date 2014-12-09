@@ -4,7 +4,10 @@
 #ifndef N2O_TYPE_ID_INCLUDED
 # define N2O_TYPE_ID_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <typeinfo>
+
 # include <boost/operators.hpp>
 
 namespace n2o {

@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_REGISTRATIONS_INCLUDED
 # define N2O_CONVERTER_REGISTRATIONS_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/converter/convertible_function.hpp>
 # include <n2o/converter/constructor_function.hpp>
 # include <n2o/js_type_info.hpp>

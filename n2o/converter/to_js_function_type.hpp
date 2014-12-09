@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_TO_JS_FUNCTION_TYPE_INCLUDED
 # define N2O_CONVERTER_TO_JS_FUNCTION_TYPE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <v8.h>
 
 namespace n2o { namespace converter {

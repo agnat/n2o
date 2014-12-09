@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_REGISTRY_INCLUDED
 # define N2O_CONVERTER_REGISTRY_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <iostream>
 
 # include <n2o/converter/convertible_function.hpp>

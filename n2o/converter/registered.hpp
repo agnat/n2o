@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_REGISTERED_INCLUDED
 # define N2O_CONVERTER_REGISTERED_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/shared_ptr.hpp>
 # include <boost/type.hpp>
 # include <boost/type_traits/add_reference.hpp>

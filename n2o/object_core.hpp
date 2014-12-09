@@ -4,6 +4,8 @@
 #ifndef N2O_OBJECT_OBJECT_BASE_INCLUDED
 # define N2O_OBJECT_OBJECT_BASE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 namespace n2o {
 
 class object_core {};

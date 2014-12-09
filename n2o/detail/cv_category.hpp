@@ -4,8 +4,10 @@
 #ifndef N2O_DETAIL_CV_CATEGORY_INCLUDED
 # define N2O_DETAIL_CV_CATEGORY_INCLUDED
 
-#include <boost/type_traits/is_const.hpp>
-#include <boost/type_traits/is_volatile.hpp>
+# include <n2o/settings.hpp>
+
+# include <boost/type_traits/is_const.hpp>
+# include <boost/type_traits/is_volatile.hpp>
 
 namespace n2o { namespace detail {
 

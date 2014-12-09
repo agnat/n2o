@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_EXCEPTION_HANDLER_INCLUDED
 # define N2O_DETAIL_EXCEPTION_HANDLER_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/function/function0.hpp>
 # include <boost/function/function2.hpp>
 

@@ -4,7 +4,7 @@
 #ifndef N2O_FUNCTION_INCLUDED
 # define N2O_FUNCTION_INCLUDED
 
-# include <n2o/config.h>
+# include <n2o/settings.hpp>
 
 # include <n2o/default_call_policies.hpp>
 # include <n2o/detail/caller.hpp>

@@ -4,6 +4,8 @@
 #ifndef N2O_OBJECTS_JS_FUNCTION_INCLUDED
 # define N2O_OBJECTS_JS_FUNCTION_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <memory>
 # include <boost/mpl/size.hpp>
 

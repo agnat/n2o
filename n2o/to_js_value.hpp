@@ -4,6 +4,8 @@
 #ifndef N2O_TO_JS_VALUE_INCLUDED
 # define N2O_TO_JS_VALUE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/value_arg.hpp>
 # include <n2o/converter/builtin_converters.hpp>
 

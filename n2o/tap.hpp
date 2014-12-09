@@ -4,6 +4,8 @@
 #ifndef N2O_TAP_INCLUDED
 # define N2O_TAP_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <string>
 # include <vector>
 

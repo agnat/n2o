@@ -4,6 +4,8 @@
 #ifndef N2O_PREPROCESSOR_INCLUDED
 # define N2O_PREPROCESSOR_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/preprocessor/cat.hpp>
 # include <boost/preprocessor/tuple/elem.hpp>
 

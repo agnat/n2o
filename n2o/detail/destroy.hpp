@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_DESTROY_INCLUDED
 # define N2O_DETAIL_DESTROY_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/type_traits/is_array.hpp>
 
 namespace n2o { namespace detail {

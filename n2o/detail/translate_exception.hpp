@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_TRANSLATE_EXCEPTION_INCLUDED
 # define N2O_DETAIL_TRANSLATE_EXCEPTION_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/call_traits.hpp>
 # include <boost/type_traits/add_const.hpp>
 # include <boost/type_traits/add_reference.hpp>

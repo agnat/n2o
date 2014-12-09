@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_JSTYPE_FUNCTION_INCLUDED
 # define N2O_CONVERTER_JSTYPE_FUNCTION_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/js_type_info.hpp>
 # include <n2o/converter/registrations.hpp>
 # include <n2o/converter/registry.hpp>

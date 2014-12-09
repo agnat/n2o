@@ -4,7 +4,7 @@
 #ifndef N2O_INCLUDED
 # define N2O_INCLUDED
 
-# include <n2o/config.h>
+# include <n2o/settings.hpp>
 
 # include <v8.h>
 

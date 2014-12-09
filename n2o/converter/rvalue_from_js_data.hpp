@@ -4,6 +4,8 @@
 #ifndef N2O_RVALUE_FROM_JS_DATA_INCLUDED
 # define N2O_RVALUE_FROM_JS_DATA_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <stddef.h>
 
 # include <boost/type_traits/add_reference.hpp>

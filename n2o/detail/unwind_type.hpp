@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_UNWIND_TYPE_INCLUDED
 # define N2O_DETAIL_UNWIND_TYPE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/type_traits/object_traits.hpp>
 # include <boost/type.hpp>
 

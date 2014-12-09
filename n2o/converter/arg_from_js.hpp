@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_ARG_FROM_JS_INCLUDED
 # define N2O_CONVERTER_ARG_FROM_JS_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/converter/rvalue_from_js_data.hpp>
 # include <n2o/converter/from_js.hpp>
 # include <n2o/detail/void_ptr.hpp>

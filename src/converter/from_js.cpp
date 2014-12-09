@@ -5,7 +5,6 @@
 
 namespace n2o { namespace converter {
 
-
 rvalue_from_js_stage1_data
 rvalue_from_js_stage1(v8::Handle<v8::Value> source, registration const& converters) {
     rvalue_from_js_stage1_data data;
@@ -27,4 +26,4 @@ rvalue_from_js_stage1(v8::Handle<v8::Value> source, registration const& converte
     return data;
 }
 
-}} // end of namespace converter, n2o
+}} // end of namespace n2o::converter

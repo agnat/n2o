@@ -4,6 +4,8 @@
 #ifndef N2O_ADD_ON_HPP_INCLUDED_
 # define N2O_ADD_ON_HPP_INCLUDED_
 
+# include <n2o/settings.hpp>
+
 # include <boost/bind.hpp>
 # include <node.h>
 

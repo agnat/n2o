@@ -4,6 +4,8 @@
 #ifndef N2O_EXCEPTION_TRANSLATOR_INCLUDED
 # define N2O_EXCEPTION_TRANSLATOR_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/bind.hpp>
 # include <boost/type.hpp>
 

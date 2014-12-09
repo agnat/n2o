@@ -5,7 +5,9 @@
 # ifndef N2O_CALLER_INCLUDED
 #  define N2O_CALLER_INCLUDED
 
-#  include <n2o/config.h>
+#  include <n2o/settings.hpp>
+
+#  include <iostream>
 
 #  include <boost/compressed_pair.hpp>
 #  include <boost/type_traits/is_same.hpp>
@@ -21,8 +23,6 @@
 #  include <boost/preprocessor/dec.hpp>
 #  include <boost/preprocessor/if.hpp>
 #  include <boost/preprocessor/iteration/local.hpp>
-
-#  include <iostream>
 
 #  include <v8.h>
 

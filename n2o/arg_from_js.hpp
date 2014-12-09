@@ -4,6 +4,8 @@
 #ifndef N2O_ARG_FROM_JS_INCLUDED
 # define N2O_ARG_FROM_JS_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/converter/arg_from_js.hpp>
 
 namespace n2o {

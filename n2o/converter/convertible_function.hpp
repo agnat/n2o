@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_CONVERTIBLE_FUNCTION_INCLUDED
 # define N2O_CONVERTER_CONVERTIBLE_FUNCTION_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <v8.h>
 
 namespace n2o { namespace converter {

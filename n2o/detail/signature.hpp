@@ -5,6 +5,8 @@
 # ifndef N2O_DETAIL_SIGNATURE_INCLUDED
 #  define N2O_DETAIL_SIGNATURE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 #  include <boost/preprocessor/iterate.hpp>
 #  include <boost/preprocessor/iteration/local.hpp>
 #  include <boost/mpl/at.hpp>

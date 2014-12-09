@@ -4,6 +4,8 @@
 #ifndef N2O_VALUE_ARG_INCLUDED
 # define N2O_VALUE_ARG_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/mpl/if.hpp>
 # include <boost/type_traits/add_reference.hpp>
 # include <boost/type_traits/add_const.hpp>

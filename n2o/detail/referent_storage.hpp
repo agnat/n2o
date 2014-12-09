@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_REFERENT_STORAGE_INCLUDED
 # define N2O_DETAIL_REFERENT_STORAGE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <boost/mpl/if.hpp>
 
 namespace n2o { namespace detail {

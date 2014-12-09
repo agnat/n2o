@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
 # define N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/function.hpp>
 # include <n2o/constructor.hpp>
 

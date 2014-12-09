@@ -4,6 +4,8 @@
 #ifndef N2O_CONVERTER_BUILTIN_CONVERTER_INCLUDED
 # define N2O_CONVERTER_BUILTIN_CONVERTER_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <string>
 # include <v8.h>
 

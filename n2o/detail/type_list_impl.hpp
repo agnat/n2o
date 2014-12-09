@@ -5,8 +5,7 @@
 # ifndef N2O_DETAIL_TYPE_LIST_IMPL_INCLUDED
 #  define N2O_DETAIL_TYPE_LIST_IMPL_INCLUDED
 
-#  include <n2o/config.h>
-#  include <n2o/detail/type_list.hpp>
+#  include <n2o/settings.hpp>
 
 #  include <boost/preprocessor/enum_params.hpp>
 #  include <boost/preprocessor/enum_params_with_a_default.hpp>
@@ -16,6 +15,8 @@
 #  include <boost/preprocessor/iterate.hpp>
 #  include <boost/preprocessor/repetition/enum_trailing.hpp>
 //#  include <boost/preprocessor/cat.hpp>
+
+#  include <n2o/detail/type_list.hpp>
 
 namespace n2o { namespace detail {
 

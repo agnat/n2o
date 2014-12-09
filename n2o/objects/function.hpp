@@ -4,7 +4,9 @@
 #ifndef N2O_OBJECTS_FUNCTION_INCLUDED
 # define N2O_OBJECTS_FUNCTION_INCLUDED
 
-#include <n2o/objects/js_function.hpp>
+# include <n2o/settings.hpp>
+
+# include <n2o/objects/js_function.hpp>
 
 namespace n2o { namespace objects {
 

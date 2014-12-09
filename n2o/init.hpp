@@ -4,7 +4,7 @@
 #ifndef N2O_INIT_INCLUDED
 # define N2O_INIT_INCLUDED
 
-# include "config.h"
+# include <n2o/settings.hpp>
 
 # include <iostream>
 

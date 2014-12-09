@@ -4,6 +4,8 @@
 #ifndef N2O_OBJECT_INCLUDED
 # define N2O_OBJECT_INCLUDED
 
+# include <n2o/settings.hpp>
+
 # include <n2o/detail/property_value.hpp>
 
 namespace n2o {

@@ -2,9 +2,11 @@
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
 #ifndef N2O_ERRORS_INCLUDED
-#define N2O_ERRORS_INCLUDED
+# define N2O_ERRORS_INCLUDED
 
-#include <boost/function/function0.hpp>
+# include <n2o/settings.hpp>
+
+# include <boost/function/function0.hpp>
 
 namespace n2o  {
 
