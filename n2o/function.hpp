@@ -10,6 +10,7 @@
 # include <n2o/detail/caller.hpp>
 # include <n2o/detail/make_function.hpp>
 # include <n2o/object_core.hpp>
+# include <n2o/signature.hpp>
 
 namespace n2o {
 

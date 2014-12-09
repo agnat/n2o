@@ -6,6 +6,8 @@
 
 # include <boost/shared_ptr.hpp>
 # include <boost/type.hpp>
+# include <boost/type_traits/add_reference.hpp>
+# include <boost/type_traits/add_cv.hpp>
 
 # include <n2o/converter/registry.hpp>
 

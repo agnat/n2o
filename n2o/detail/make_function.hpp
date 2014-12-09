@@ -6,6 +6,7 @@
 
 # include <n2o/objects/js_function.hpp>
 # include <n2o/objects/function.hpp>
+# include <n2o/detail/caller.hpp>
 
 namespace n2o { namespace detail {
 

@@ -16,6 +16,8 @@
 #  include <boost/preprocessor/repetition/enum_trailing_binary_params.hpp>
 #  include <boost/preprocessor/repetition/enum_binary_params.hpp>
 
+#  include <v8.h>
+
 namespace n2o { namespace detail {
 
 typedef int void_result_to_js;

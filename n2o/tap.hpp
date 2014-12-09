@@ -4,8 +4,12 @@
 #ifndef N2O_TAP_INCLUDED
 # define N2O_TAP_INCLUDED
 
+# include <string>
 # include <vector>
+
 # include <node.h>
+
+# include <n2o/type_id.hpp>
 
 namespace n2o {
 

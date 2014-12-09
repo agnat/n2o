@@ -17,6 +17,7 @@
 # include <boost/mpl/size.hpp>
 # include <boost/mpl/iterator_range.hpp>
 
+#include <n2o/default_call_policies.hpp>
 #include <n2o/detail/type_list.hpp>
 #include <n2o/errors.hpp>
 

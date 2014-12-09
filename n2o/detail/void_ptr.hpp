@@ -4,6 +4,8 @@
 #ifndef N2O_DETAIL_VOID_PTR_INCLUDED
 # define N2O_DETAIL_VOID_PTR_INCLUDED
 
+#include <boost/type_traits/remove_cv.hpp>
+
 namespace n2o { namespace detail {
 
 template <typename U>

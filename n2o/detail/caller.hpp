@@ -28,7 +28,7 @@
 
 #  include <n2o/function_wrapper.hpp>
 #  include <n2o/arg_from_js.hpp>
-//#  include <n2o/errors.hpp>
+#  include <n2o/invoke.hpp>
 #  include <n2o/detail/signature.hpp>
 
 namespace n2o { namespace detail {

@@ -5,6 +5,7 @@
 # define N2O_CONSTRUCTOR_INCLUDED
 
 # include <n2o/init.hpp>
+# include <n2o/signature.hpp>
 # include <n2o/detail/make_function.hpp>
 
 namespace n2o {
