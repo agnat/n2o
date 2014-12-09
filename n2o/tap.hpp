@@ -79,7 +79,7 @@ private:
         v8::Local<v8::Object> obj = v8::Local<v8::Object>::New(v8::Isolate::GetCurrent(), t_);
         v8::Local<v8::String> sym = string(symbol).As<v8::String>();
         node::MakeCallback(v8::Isolate::GetCurrent(), obj, sym, static_cast<int>(args.size()),
-                const_cast<v8::Handle<v8::Value>*>(&*args.begin())); // XXX const correctness in node
+                const_cast<v8::Handle<v8::Value>*>(&*args.begin())); // XXX const correctness :-/
     }
 
     v8::Persistent<v8::Object, v8::CopyablePersistentTraits<v8::Object> > t_;

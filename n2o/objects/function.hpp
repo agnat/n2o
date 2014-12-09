@@ -16,7 +16,7 @@ public:
     static
     void
     call(v8::FunctionCallbackInfo<v8::Value> const& args);
-    v8::Handle<v8::Value> 
+    v8::Handle<v8::Value>
     operator()(v8::FunctionCallbackInfo<v8::Value> const& args) const;
 
     v8::Handle<v8::Value> name() const;
@@ -24,7 +24,7 @@ public:
     static inline
     v8::Handle<v8::Value>
     create(js_function const& f) {
-        return v8::External::New(v8::Isolate::GetCurrent(), new function(f));        
+        return v8::External::New(v8::Isolate::GetCurrent(), new function(f));
     }
 private:
     v8::Handle<v8::Value> signature(bool show_return_type = false) const;
