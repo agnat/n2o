@@ -1,8 +1,8 @@
 //==============================================================================
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
-#ifndef N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
-# define N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
+#ifndef N2O_DETAIL_PROPERTY_VALUE_INCLUDED
+# define N2O_DETAIL_PROPERTY_VALUE_INCLUDED
 
 # include <n2o/settings.hpp>
 
@@ -39,7 +39,6 @@ struct property_value {
         }
 };
 
-
 }} // end of namespace n2o::detail
 
-#endif // N2O_DETAIÖ_PROPERTY_VALUE_INCLUDED
+#endif // N2O_DETAIL_PROPERTY_VALUE_INCLUDED

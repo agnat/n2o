@@ -26,8 +26,7 @@ void register_translator() {
 
 //==============================================================================
 
-void double_func(double) {}
-
+void func(double, char const*, unsigned, bool) {}
 
 //==============================================================================
 N2O_ADD_ON(object exports) {
@@ -38,5 +37,5 @@ N2O_ADD_ON(object exports) {
     exports["throw_out_of_cheese"] = function(throw_out_of_cheese);
     exports["register_translator"] = function(register_translator);
 
-    exports["double_func"] = function(double_func);
+    exports["func"] = function(func);
 }

@@ -4,6 +4,8 @@
 
 #include <n2o/objects/function.hpp>
 
+#include <sstream>
+
 #include <boost/bind.hpp>
 
 #include <n2o/errors.hpp>
@@ -68,19 +70,84 @@ function::call(v8::FunctionCallbackInfo<v8::Value> const& args) {
     handle_exception(bind(f, args));
 }
 
+v8::Handle<v8::Value>
+function::signature(bool show_return_type) const {
+    js_function const& impl = f_;
+
+    detail::signature_element const* return_type = impl.signature();
+    detail::signature_element const* s = return_type + 1;
+
+    v8::Isolate * isolate = v8::Isolate::GetCurrent();
+    v8::Local<v8::Array> formal_parameters = v8::Array::New(isolate);
+    if (impl.max_arity() == 0) {
+        formal_parameters->Set(0, v8::String::NewFromUtf8(isolate, "void"));
+    }
+
+    for (unsigned i = 0; i < impl.max_arity(); ++i) {
+        if (s[i].basename == 0) {
+            formal_parameters->Set(i, v8::String::NewFromUtf8(isolate,"..."));
+            break;
+        }
+
+        v8::Local<v8::String> parameter = v8::String::NewFromUtf8(isolate, s[i].basename);
+        if (s[i].lvalue) {
+            parameter = v8::String::Concat(parameter, v8::String::NewFromUtf8(isolate, " {lvalue}"));
+        }
+        formal_parameters->Set(i, parameter);
+    }
+
+    std::ostringstream sig;
+    v8::String::Utf8Value name(this->name().As<v8::String>());
+    sig << *name << "(";
+    unsigned argc = formal_parameters->Length();
+    for (unsigned i = 0; i < argc; ++i) {
+        v8::String::Utf8Value param(formal_parameters->Get(i).As<v8::String>());
+        sig << *param;
+        if (i < argc - 1) {
+            sig << ", ";
+        }
+    }
+    sig << ")";
+    if (show_return_type) {
+        sig << " -> " << return_type->basename;
+    }
+    return v8::String::NewFromUtf8(isolate, sig.str().c_str());
+}
+
+v8::Handle<v8::Value>
+function::signatures(bool show_return_type) const {
+    v8::Isolate * isolate = v8::Isolate::GetCurrent();
+    v8::Local<v8::Array> result = v8::Array::New(isolate);
+    unsigned i = 0;
+    for (function const* f = this; f; f = unwrap(v8::Local<v8::Value>::New(isolate, f->overloads_))) {
+        result->Set(i++, f->signature(show_return_type));
+    }
+    return result;
+}
+
 void
 function::argument_error(v8::FunctionCallbackInfo<v8::Value> const& args) const {
-    std::string message("javascript argument types ");
+    std::ostringstream msg;
     v8::String::Utf8Value s(this->name().As<v8::String>());
-    message += std::string(*s) + "(";
+    msg << "javascript argument types " << *s << "(";
     int argc = args.Length();
     for (int i = 0; i < argc; ++i) {
-        message += js_typeof(args[i]).name();
-        if (i < argc - 1) { message += ", "; }
+        msg << js_typeof(args[i]).name();
+        if (i < argc - 1) { msg << ", "; }
     }
-    message += ") did not match c++ signature:\n";
+    msg << ") did not match c++ signature:\n";
+
+    v8::Local<v8::Array> sigs = signatures().As<v8::Array>();
+    unsigned sig_count = sigs->Length();
+    for (unsigned i = 0; i < sig_count; ++i) {
+        v8::String::Utf8Value sig(sigs->Get(i).As<v8::String>());
+        msg << "" << *sig;
+        if (i < sig_count - 1) {
+            msg << "\n";
+        }
+    }
     
-    js_type_error(message.c_str());
+    js_type_error(msg.str().c_str());
     throw_error_already_set();
 }
 
