@@ -14,8 +14,11 @@
   , "node-gyp": "1.0.2"
   }
 , "devDependencies":
-  { "tap" : "*"
-  , "glob": "*"
+  { "tap"  : "*"
+  , "glob" : "*"
+  , "temp" : "*"
+  , "merge": "*"
+  , "slide": "*"
   }
 , "license": "MIT"
 }

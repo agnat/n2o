@@ -9,7 +9,10 @@ endif
 all: $(N2O_TARGET)
 
 test: $(N2O_TARGET) node_modules
-	tap test/*.js
+	tap test/0*.js
+
+test-all: $(N2O_TARGET) node_modules
+	tap --timeout 120 test/*.js
 
 lint:
 	@find . -type f -name "*.[ch]*" -not -path "./boost/*" -not -path "./node_modules/*" -not -name "*.swp" \
@@ -25,7 +28,7 @@ clean:
 distclean: clean
 	rm -rf node_modules samples/{sandbox,hello_world}/node_modules
 
-.PHONY: all test clean distclean xcode
+.PHONY: all test test-all clean distclean xcode
 
 #==============================================================================
 
