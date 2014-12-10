@@ -1,3 +1,6 @@
+//==============================================================================
+// Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
+//==============================================================================
 #include <n2o/js_type_info.hpp>
 
 namespace n2o {

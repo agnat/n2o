@@ -24,17 +24,19 @@ struct property_value {
     property_value operator=(function const& v) {
         v8::Isolate * isolate = v8::Isolate::GetCurrent();
         v8::Local<v8::Function> f = v.js_function();
+        /*
         v8::Local<v8::String> name = f->GetName().As<v8::String>();
         if (name->Length() == 0) {
             f->SetName(v8::String::NewFromUtf8(isolate, name_));
         }
+        */
         obj_->Set(v8::String::NewFromUtf8(isolate, name_), f);
         return *this;
     }
     template <typename T>
         property_value operator=(constructor<T> const& v) {
             obj_->Set( v8::String::NewFromUtf8(v8::Isolate::GetCurrent(), name_)
-                    , v.function_template()->GetFunction());
+                     , v.function_template()->GetFunction());
             return *this;
         }
 };

@@ -9,12 +9,12 @@
 # include <n2o/default_call_policies.hpp>
 # include <n2o/detail/caller.hpp>
 # include <n2o/detail/make_function.hpp>
-# include <n2o/object_core.hpp>
+# include <n2o/value_core.hpp>
 # include <n2o/signature.hpp>
 
 namespace n2o {
 
-class function : public object_core {
+class function /* : TODO: public object */ {
 public:
     template <typename F>
     explicit function(F f) :

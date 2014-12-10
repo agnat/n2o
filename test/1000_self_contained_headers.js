@@ -4,6 +4,7 @@ var n2o_test = require ('../tools/lib/n2o_test')
   , path = require('path')
   , test = require('tap').test
   , opts = { includes: [path.resolve(__dirname, '../n2o.gypi')]}
+  , excludes = ['n2o/value_call.hpp']
   ;
 
 function compileSingleHeader(file) {
@@ -20,6 +21,8 @@ function compileSingleHeader(file) {
 }
 n2o_test.headers(function(error, files) {
   for (var i in files) {
-    compileSingleHeader(files[i]);
+    if (excludes.indexOf(files[i]) == -1) {
+      compileSingleHeader(files[i]);
+    }
   }
 });

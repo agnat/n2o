@@ -6,7 +6,7 @@
 
 # include <n2o/settings.hpp>
 
-# include <n2o/value_arg.hpp>
+# include <n2o/detail/value_arg.hpp>
 # include <n2o/converter/builtin_converters.hpp>
 
 namespace n2o {

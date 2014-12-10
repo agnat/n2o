@@ -37,5 +37,5 @@ N2O_ADD_ON(object exports) {
     exports["throw_out_of_cheese"] = function(throw_out_of_cheese);
     exports["register_translator"] = function(register_translator);
 
-    exports["func"] = function(func);
+    exports["func"] = function("func", func);
 }

@@ -78,7 +78,7 @@ test("function names", function(t) {
   t.strictEquals(functions.named_function.name, (function function_with_a_name(){}).name);
 
   t.type(functions.anonymous_function, 'function');
-  t.strictEquals(functions.anonymous_function.name, (function(){}).name);
+  t.strictEquals(functions.anonymous_function.name, (function(){}).name, "anonymous function is anonymous");
 
   t.end();
 });

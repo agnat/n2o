@@ -8,6 +8,8 @@
 
 # include <boost/function/function0.hpp>
 
+# include <v8.h>
+
 namespace n2o  {
 
 struct error_already_set {
@@ -36,6 +38,16 @@ void js_type_error(const char * msg);
 void js_range_error(const char * msg);
 
 void js_error(const char * msg);
+
+template <typename T>
+inline
+v8::Handle<T>
+expect_non_null(v8::Handle<T> x) {
+    if (x.IsEmpty()) {
+        throw_error_already_set();
+    }
+    return x;
+}
 
 } // end of namespace n2o
 
