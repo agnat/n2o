@@ -15,7 +15,7 @@
 namespace n2o { namespace converter {
 
 template <typename T>
-struct registered_pointee : 
+struct registered_pointee :
     registered<
         typename boost::remove_pointer<
             typename boost::remove_cv<

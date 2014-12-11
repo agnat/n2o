@@ -43,6 +43,6 @@ template <typename T>
 struct unwrap_pointer<pointer_wrapper<T> > {
     typedef T type;
 };
-    
+
 } // end of namespace n2o
 #endif // N2O_PTR_INCLUDED

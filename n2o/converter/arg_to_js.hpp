@@ -13,6 +13,7 @@
 # include <boost/mpl/or.hpp>
 # include <boost/type_traits/function_traits.hpp>
 
+# include <n2o/converter/registered.hpp>
 # include <n2o/converter/arg_to_js_base.hpp>
 # include <n2o/converter/builtin_converters.hpp>
 # include <n2o/detail/string_literal.hpp>
@@ -29,11 +30,17 @@ namespace detail {
 template <typename T>
 struct function_arg_to_js {
     function_arg_to_js(T const& x);
+
+    // XXX
+    v8::Handle<v8::Value> get() {};
 };
 
 template <typename T>
 struct reference_arg_to_js {
     reference_arg_to_js(T & x);
+
+    // XXX
+    v8::Handle<v8::Value> get() {};
 private:
     static v8::Handle<v8::Value> get_value(T & x);
 };
@@ -41,6 +48,9 @@ private:
 template <typename T>
 struct shared_ptr_arg_to_js {
     shared_ptr_arg_to_js(T const& x);
+
+    // XXX
+    v8::Handle<v8::Value> get() {};
 private:
     static v8::Handle<v8::Value> get_value(T & x);
 };
@@ -58,6 +68,9 @@ struct pointer_deep_arg_to_js : arg_to_js_base {
 template <typename Ptr>
 struct pointer_shallow_arg_to_js {
     pointer_shallow_arg_to_js(Ptr);
+
+    // XXX
+    v8::Handle<v8::Value> get() {};
 private:
     static v8::Handle<v8::Value> get_value(Ptr p);
 };
@@ -85,6 +98,7 @@ struct select_arg_to_js {
         // handle char const[N]; and treat them as char const*
           n2o::detail::is_string_literal<T const>
         , arg_to_js<char const*>
+
         , typename boost::mpl::if_<
               n2o::detail::value_is_shared_ptr<T>
             , shared_ptr_arg_to_js<T>
@@ -137,7 +151,17 @@ struct arg_to_js : detail::select_arg_to_js<T>::type {
 
 namespace detail {
 
+template <typename T>
+inline
+value_arg_to_js<T>::value_arg_to_js(T const& x)
+    : arg_to_js_base(&x, registered<T>::converters)
+{}
+
 } // end of namespace detail
+
+template <typename T>
+inline
+arg_to_js<T>::arg_to_js(T const& x) : base(x) {}
 
 }} // end of namespace n2o::converter
 

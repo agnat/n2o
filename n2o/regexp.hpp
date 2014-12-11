@@ -1,8 +1,8 @@
 //==============================================================================
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
-#ifndef N2O_OBJECT_INCLUDED
-# define N2O_OBJECT_INCLUDED
+#ifndef N2O_REGEXP_INCLUDED
+# define N2O_REGEXP_INCLUDED
 
 # include <n2o/settings.hpp>
 
@@ -12,22 +12,14 @@ namespace n2o {
 
 namespace detail {
 
-struct object_base : value {
-
-protected:
-    explicit object_base(value_cref other);
+struct regexp_base : value {
 };
 
 } // end of namespace detail
 
-class object : public detail::object_base {
-    typedef detail::object_base base;
-  public:
-
-    template <typename T>
-    explicit object(T const& other) : base(value(other)) {}
+class regexp : public detail::regexp_base {
 };
 
-}
+} // end of namespace n2o
 
-#endif // N2O_OBJECT_INCLUDED
+#endif // N2O_REGEXP_INCLUDED

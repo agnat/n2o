@@ -49,7 +49,12 @@ namespace detail {
 # define N2O_ARG_TO_JS_BY_VALUE(T, expr)              \
     namespace converter {                             \
         template <> struct arg_to_js<T>{              \
-            arg_to_js(T const& x) {}                  \
+            arg_to_js(T const& x) : v_(expr) {}       \
+            v8::Handle<v8::Value> get() {             \
+                return v_;                            \
+            }                                         \
+        private:                                      \
+            v8::Handle<v8::Value> v_;                 \
         };                                            \
     }
 

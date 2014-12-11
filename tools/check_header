@@ -1,0 +1,23 @@
+#!/usr/bin/env node
+
+var path = require('path')
+  , n2o_test = require('./lib/n2o_test')
+  , opts = { includes: [path.resolve(__dirname, '../n2o.gypi')]}
+  ;
+
+function compileHeader(file) {
+  var src = "#include <" + file + ">\n" +
+            "int main() { return 0; }";
+  n2o_test.compile(src, opts, function (error) {
+    if (error) {
+      console.log(error);
+      process.exit(1);
+    } else {
+      process.exit(0);
+    }
+  });
+}
+
+compileHeader(process.argv[2]);
+
+// vim: syntax=javascript

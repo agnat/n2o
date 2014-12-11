@@ -48,7 +48,7 @@ struct unforward<reference_to_value<T> > {
 };
 
 template <typename T>
-struct unforward_cref 
+struct unforward_cref
     : n2o::detail::value_arg<typename boost::unwrap_reference<T>::type>
 {};
 
@@ -56,7 +56,7 @@ template <typename T>
 struct unforward_cref<reference_to_value<T> >
     : boost::add_reference<typename boost::add_const<T>::type>
 {};
-    
+
 }} // end of namespace n2o::objects
 
 #endif // N2O_OBJECTS_FORWARD_INCLUDED

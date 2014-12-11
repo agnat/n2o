@@ -13,7 +13,7 @@
 namespace n2o { namespace detail {
 
 template <typename F, typename CallPolicies, typename Sig>
-v8::Local<v8::Function>
+v8::Handle<v8::Function>
 make_function(F f, CallPolicies const& p, Sig signature) {
     v8::Isolate * isolate = v8::Isolate::GetCurrent();
     static v8::Persistent<v8::FunctionTemplate> proto_template;

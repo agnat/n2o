@@ -6,7 +6,8 @@ ifeq ($(BUILDTYPE),Debug)
 	NODE_GYP_OPTS+= --debug
 endif
 
-all: $(N2O_TARGET)
+all:
+	node-gyp build $(NODE_GYP_OPTS)
 
 test: $(N2O_TARGET) node_modules
 	tap test/0*.js
@@ -35,8 +36,6 @@ distclean: clean
 build/Makefile:
 	node-gyp configure $(NODE_GYP_OPTS)
 
-$(N2O_TARGET): build/Makefile
-	node-gyp build $(NODE_GYP_OPTS)
 
 node_modules:
 	npm link

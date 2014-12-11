@@ -7,12 +7,87 @@
 
 #include <n2o/converter/registrations.hpp>
 #include <n2o/converter/builtin_converters.hpp>
+#include <n2o/errors.hpp>
 
 // Apple mach workaround
 #include <iostream>
 
 #define N2O_TRACE(x) // x
 namespace n2o { namespace converter {
+
+js_type_info const*
+registration::expected_from_js_type() const {
+    if (this->type_object_ != 0) {
+        return this->type_object_;
+    }
+
+    std::set<js_type_info const*> pool;
+
+    for (rvalue_from_js_chain * r = rvalue_chain; r; r=r->next) {
+        if (r->expected_js_type) {
+            pool.insert(r->expected_js_type());
+        }
+    }
+
+    // for now D.Abrahams skips the search for a common base ;)
+    if (pool.size() == 1) {
+        return *pool.begin();
+    }
+
+    return 0;
+}
+
+js_type_info const*
+registration::to_js_target_type() const {
+    if (this->type_object_ != 0) {
+        return this->type_object_;
+    }
+
+    if (this->to_js_target_type_ != 0) {
+        return this->to_js_target_type_();
+    }
+
+    return 0;
+}
+
+js_type_info *
+registration::get_type_object() const {
+    if (this->type_object_ == 0) {
+        js_error( (std::string("no javascript class registered for c++ class ") 
+                + this->target_type.name()).c_str());
+        throw_error_already_set();
+    }
+
+    return this->type_object_;
+}
+
+v8::Handle<v8::Value>
+registration::to_js(void const volatile* src) const {
+    if (this->to_js_ == 0) {
+        js_error( (std::string("no to_js (by-value) converter found for c++ type ")
+                + this->target_type.name()).c_str());
+        throw_error_already_set();
+    }
+    return src == 0 
+        ? v8::Handle<v8::Value>(v8::Undefined(v8::Isolate::GetCurrent()))
+        : this->to_js_(const_cast<void*>(src));
+}
+
+namespace {
+    template <typename T>
+    void
+    delete_node(T* node) {
+        if (not not node && not not node->next) {
+            delete_node(node->next);
+        }
+        delete node;
+    }
+}
+
+registration::~registration() {
+    delete_node(lvalue_chain);
+    delete_node(rvalue_chain);
+}
 
 namespace {
 

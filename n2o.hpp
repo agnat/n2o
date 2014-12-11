@@ -16,6 +16,7 @@
 # include <n2o/constructor.hpp>
 
 # include <n2o/object.hpp>
+# include <n2o/proxy.hpp>
 
 # include <n2o/add_on.hpp>
 

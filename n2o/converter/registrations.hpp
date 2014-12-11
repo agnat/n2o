@@ -28,6 +28,7 @@ struct rvalue_from_js_chain {
 
 struct registration {
     explicit registration(type_info target, bool is_shared_ptr = false);
+    ~registration();
     
     v8::Handle<v8::Value> to_js(void const volatile*) const;
     

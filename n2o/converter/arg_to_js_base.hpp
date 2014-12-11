@@ -16,14 +16,16 @@ namespace detail {
 
 struct arg_to_js_base {
     arg_to_js_base(void const volatile* source, registration const&);
-    v8::Handle<v8::Value> get() const { return v8::Local<v8::Value>::New(v8::Isolate::GetCurrent(), ptr_); }
+    v8::Handle<v8::Value> get() const {
+        return v8::Local<v8::Value>::New(v8::Isolate::GetCurrent(), ptr_);
+    }
     v8::Handle<v8::Value> release() {
         v8::Local<v8::Value> v = v8::Local<v8::Value>::New(v8::Isolate::GetCurrent(), ptr_);
         ptr_.Reset();
         return v;
     }
 private:
-    v8::Persistent<v8::Value> ptr_;
+    v8::Persistent<v8::Value, v8::CopyablePersistentTraits<v8::Value> > ptr_;
 };
 
 } // end of namespace detail

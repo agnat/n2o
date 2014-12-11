@@ -33,8 +33,8 @@ template <typename Policies> class proxy;
 struct const_property_policies;
 struct property_policies;
 
-typedef proxy<const_property_policies> const_object_property;
-typedef proxy<property_policies> object_property;
+typedef proxy<const_property_policies> const_value_property;
+typedef proxy<property_policies> value_property;
 
 N2O_IS_XXX_DEF(proxy, n2o::api::proxy, 1)
 
@@ -58,21 +58,22 @@ public:
 
     operator bool_type() const;
 
-    const_object_property operator[](value_cref) const;
-    object_property operator[](value_cref);
+    const_value_property operator[](value_cref) const;
+    value_property operator[](value_cref);
 
     template <typename T>
-    const_object_property
+    const_value_property
     operator[](T const& key) const;
 
     template <typename T>
-    object_property
+    value_property
     operator[](T const& key);
 };
 
 struct value_base : value_operators<value> {
     inline value_base(value_base const&);
     inline value_base(v8::Handle<v8::Value> v);
+    inline ~value_base();
 
     inline value_base& operator=(value_base const& rhs);
 
@@ -80,11 +81,11 @@ struct value_base : value_operators<value> {
 
     inline bool is_undefined() const;
 private:
-    v8::Handle<v8::Value> value_;
+    v8::Handle<v8::Value> handle_;
 };
 
 template <typename T, typename U>
-struct is_derived : 
+struct is_derived :
     boost::is_convertible<
           typename boost::remove_reference<T>::type*
         , U const*
@@ -113,11 +114,149 @@ public:
     value();
 
     template <typename T>
+    explicit value(v8::Handle<T> x) : value_base(x) {}
+
+    template <typename T>
     explicit value(T const& x) : value_base(value_base_initializer(x))
     {}
+
 };
 
+template <bool is_proxy = false, bool is_object_manager = false>
+struct value_initializer_impl {
+    static
+    v8::Handle<v8::Value>
+    get(value const& x, boost::mpl::true_) {
+        return x.handle();
+    }
+
+    template <typename T>
+    static
+    v8::Handle<v8::Value>
+    get(T const& x, boost::mpl::false_) {
+        return converter::arg_to_js<T>(x).get();
+    }
+};
+
+template <>
+struct value_initializer_impl<true, false> {
+    template <typename Policies>
+    static
+    v8::Handle<v8::Value>
+    get(proxy<Policies> const& x, boost::mpl::false_) {
+        return x.operator value().handle();
+    }
+};
+
+template <>
+struct value_initializer_impl<false, true> {
+    template <typename T, typename U>
+    static
+    v8::Handle<v8::Value>
+    get(T const& x, U) {
+        return get_managed_object(x, n2o::tag);
+    }
+};
+
+template <>
+struct value_initializer_impl<true, true> {};
+
+template <typename T>
+struct value_initializer : value_initializer_impl<
+      is_proxy<T>::value
+    , converter::is_object_manager<T>::value
+>
+{};
+
 } // end of namespace api
+
+using api::value;
+
+template <typename T> struct extract;
+
+
+//=== Implementation ===========================================================
+
+namespace detail {
+
+class call_proxy {
+public:
+    call_proxy(value target) : target_(target) {}
+    operator value() const { return target_; }
+private:
+    value target_;
+};
+
+class args_proxy : public call_proxy {
+public:
+    args_proxy(value v) : call_proxy(v) {}
+};
+
+} // end of namespace detail
+
+
+template <typename U>
+value
+api::value_operators<U>::operator()(detail::args_proxy const& args) const {
+    U const& self = *static_cast<U const*>(this);
+    
+    // TODO:
+
+    return value();
+}
+
+inline
+value::value() : value_base(v8::Undefined(v8::Isolate::GetCurrent())) {}
+
+inline
+api::value_base::value_base(value_base const& rhs) : handle_(rhs.handle_) {}
+
+inline
+api::value_base::value_base(v8::Handle<v8::Value> v) : handle_(v) {}
+
+inline
+api::value_base &
+api::value_base::operator=(api::value_base const& rhs) {
+    this->handle_ = rhs.handle_;
+    return *this;
+}
+
+inline
+api::value_base::~value_base() {}
+
+inline
+v8::Handle<v8::Value>
+api::value_base::handle() const { return handle_; }
+
+//=== Converter Specializations ================================================
+
+namespace converter {
+
+template <typename T> struct object_manager_traits;
+
+template <>
+struct object_manager_traits<value> {
+    static const bool is_specialized = true;
+    static
+    bool
+    check(v8::Handle<v8::Value>) { return true; }
+
+    static
+    v8::Handle<v8::Value>
+    adopt(v8::Handle<v8::Value> x) {
+        return x;
+    }
+
+    static js_type_info const* get_jstype() { return 0; }
+};
+
+} // end of namespace converter
+
+inline
+v8::Handle<v8::Value>
+get_managed_object(value const& x, tag_t) {
+    return x.handle();
+}
 
 } // end of namespace n2o
 

@@ -14,12 +14,13 @@ temp.track();
 exports.compile = function compile(code, options, callback) {
   temp.mkdir('node-configure', function(error, directory) {
     if (error) { return callback(error) }
-    var gypOpts = {cwd: directory, stdio: 'ignore'}
+    var configOpts = {cwd: directory, stdio: 'ignore' }
+      , buildOpts = {cwd: directory, stdio: ['ignore', 'ignore', process.stderr] }
       , test =  path.join('build', 'Release', 'test');
     chain( [ [ writeProjectFiles, directory, code, 'executable', options ]
-           , [ spawn, 'node-gyp', ['configure'], gypOpts ]
-           , [ spawn, 'node-gyp', ['build'], gypOpts ]
-           , [ spawn, test, [], gypOpts ]
+           , [ spawn, 'node-gyp', ['configure'], configOpts ]
+           , [ spawn, 'node-gyp', ['build', '--loglevel=warn'], buildOpts ]
+           , [ spawn, test, [], configOpts ]
            ], callback);
 
   });

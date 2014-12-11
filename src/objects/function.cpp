@@ -91,7 +91,8 @@ function::signature(bool show_return_type) const {
 
         v8::Local<v8::String> parameter = v8::String::NewFromUtf8(isolate, s[i].basename);
         if (s[i].lvalue) {
-            parameter = v8::String::Concat(parameter, v8::String::NewFromUtf8(isolate, " {lvalue}"));
+            parameter = v8::String::Concat( parameter
+                                          , v8::String::NewFromUtf8(isolate, " {lvalue}"));
         }
         formal_parameters->Set(i, parameter);
     }

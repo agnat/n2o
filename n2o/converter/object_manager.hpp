@@ -8,7 +8,7 @@
 
 # include <boost/mpl/bool.hpp>
 
-namespace n2o { 
+namespace n2o {
 
 namespace api { class value; }
 
@@ -16,7 +16,7 @@ namespace converter {
 
 template <typename T>
 struct default_object_manager_traits {
-    static const bool is_specialized = true; // XXX n2o::detail::is_borrowed_ptr<T>::value;
+    static const bool is_specialized = false; // XXX n2o::detail::is_borrowed_ptr<T>::value;
 };
 
 template <typename T>

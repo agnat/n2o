@@ -1,11 +1,11 @@
 //==============================================================================
 // Copyright David Siegel 2014. Distributed under the MIT license. See LICENSE.
 //==============================================================================
-#ifndef N2O_TAG_INCLUDED
-# define N2O_TAG_INCLUDED
 
-# include <n2o/settings.hpp>
+#include <n2o/object.hpp>
 
-namespace n2o { enum tag_t { tag }; }
+namespace n2o { namespace detail {
 
-#endif // N2O_TAG_INCLUDED
+object_base::object_base(value_cref other) : value(other) {}
+
+}} // end of namespace n2o::detail

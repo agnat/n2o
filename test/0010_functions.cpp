@@ -23,7 +23,7 @@ void test_function(v8::FunctionCallbackInfo<v8::Value> const& args) {
 }
 
 void cpp_tests(object exports) {
-    exports["test_function"] = v8::Function::New(v8::Isolate::GetCurrent(), test_function);
+    // exports["test_function"] = v8::Function::New(v8::Isolate::GetCurrent(), test_function);
 }
 
 //=== Basic Functions ==========================================================
