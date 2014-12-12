@@ -113,8 +113,12 @@ class value : public value_base {
 public:
     value();
 
+    // XXX: Convert handles and locals to value. Not sure about this...
     template <typename T>
     explicit value(v8::Handle<T> x) : value_base(x) {}
+
+    template <typename T>
+    explicit value(v8::Local<T> x) : value_base(x) {}
 
     template <typename T>
     explicit value(T const& x) : value_base(value_base_initializer(x))

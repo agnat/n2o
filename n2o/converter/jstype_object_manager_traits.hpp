@@ -6,6 +6,8 @@
 
 #include <n2o/settings.hpp>
 
+#include <v8.h>
+
 namespace n2o { namespace converter {
 
 template <typename T> struct object_manager_traits;
